@@ -38,5 +38,10 @@ namespace TemperatureConverter.Core.Application
 
             public INavigation<ConverterScene> ShowHome { get; }
         }
+
+        protected override void RegisterServices(IServiceRegistration services)
+        {
+            services.RegisterSingleton<LoginService>();
+        }
     }
 }

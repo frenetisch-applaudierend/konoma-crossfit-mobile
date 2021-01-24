@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Konoma.CrossFit
 {
     public abstract class CrossFitApplication<TStartup, TMainNavigation>
         where TStartup : IStartup<TMainNavigation>
     {
-        internal async Task InitializeAsync(Action<IServiceRegistration> registerInternalServices)
+        internal async Task InitializeAsync(Func<IServiceRegistration, Task> registerInternalServices)
         {
-            var registration = new DummyServiceRegistration();
+            var services = new ServiceCollection();
+            var registration = new ServiceRegistration(services);
 
-            registerInternalServices(registration);
+            await registerInternalServices(registration);
             await RegisterServicesAsync(registration);
+
+            ServiceProvider = services.BuildServiceProvider();
         }
 
         internal async Task StartApplicationAsync(TMainNavigation mainNavigation)
@@ -22,7 +26,12 @@ namespace Konoma.CrossFit
 
         public IServiceProvider ServiceProvider { get; private set; } = default!;
 
-        protected virtual Task RegisterServicesAsync(IServiceRegistration services) =>
-            Task.CompletedTask;
+        protected virtual Task RegisterServicesAsync(IServiceRegistration services)
+        {
+            RegisterServices(services);
+            return Task.CompletedTask;
+        }
+
+        protected virtual void RegisterServices(IServiceRegistration services) { }
     }
 }
