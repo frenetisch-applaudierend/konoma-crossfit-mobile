@@ -1,23 +1,12 @@
 using System.Threading.Tasks;
+using Konoma.CrossFit.Util;
 
 namespace Konoma.CrossFit
 {
-    public interface IStartup
-    {
-        void Configure(IStartupCompletion completion);
-    }
+    // ReSharper disable once TypeParameterCanBeVariant
 
-    public interface IStartupCompletion
+    public interface IStartup<TMainNavigation>
     {
-        void StartScene<TScene>() where TScene : Scene;
-    }
-
-    public class Startup<TScene> : IStartup
-        where TScene : Scene
-    {
-        public void Configure(IStartupCompletion completion)
-        {
-            completion.StartScene<TScene>();
-        }
+        Task StartApplicationAsync(TMainNavigation navigation);
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<forms:CrossFitContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
+    xmlns:converter="clr-namespace:TemperatureConverter.Core.Application.Converter;assembly=TemperatureConverter.Core"
+    x:TypeArguments="converter:ConverterScene"
+    x:Class="TemperatureConverter.Forms.Application.Converter.ConverterPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Hello, Converter!"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</forms:CrossFitContentPage>

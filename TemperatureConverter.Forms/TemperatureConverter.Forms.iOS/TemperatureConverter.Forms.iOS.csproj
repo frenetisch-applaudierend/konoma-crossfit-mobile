@@ -109,6 +109,10 @@
         <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
     </ItemGroup>
     <ItemGroup>
+        <ProjectReference Include="..\..\Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj">
+          <Project>{58b4508d-bdaa-40cd-af0d-5df6fa055a1f}</Project>
+          <Name>Konoma.CrossFit.Forms</Name>
+        </ProjectReference>
         <ProjectReference Include="..\TemperatureConverter.Forms\TemperatureConverter.Forms.csproj">
             <Project>{B4152CC8-223F-48E4-9EDF-63FB556EB343}</Project>
             <Name>TemperatureConverter.Forms</Name>

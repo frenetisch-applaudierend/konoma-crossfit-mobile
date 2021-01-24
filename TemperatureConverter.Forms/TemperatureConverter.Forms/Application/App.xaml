@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<application:FormsApp xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:local="clr-namespace:TemperatureConverter.Forms"
+                xmlns:application="clr-namespace:TemperatureConverter.Forms.Application;assembly=TemperatureConverter.Forms"
+                x:Class="TemperatureConverter.Forms.Application.App">
+    <Application.Resources>
+    </Application.Resources>
+</application:FormsApp>

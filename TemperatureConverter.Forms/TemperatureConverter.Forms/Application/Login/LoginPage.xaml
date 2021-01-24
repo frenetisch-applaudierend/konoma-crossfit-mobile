@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<forms:CrossFitContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
+    xmlns:login="clr-namespace:TemperatureConverter.Core.Application.Login;assembly=TemperatureConverter.Core"
+    x:TypeArguments="login:LoginScene"
+    x:Class="TemperatureConverter.Forms.Application.Login.LoginPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Hello, Login!"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</forms:CrossFitContentPage>
