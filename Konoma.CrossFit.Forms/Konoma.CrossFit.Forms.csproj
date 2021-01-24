@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj" />
+    </ItemGroup>
+
+</Project>

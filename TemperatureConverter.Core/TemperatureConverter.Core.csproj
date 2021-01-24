@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj" />
+    </ItemGroup>
+
 </Project>
