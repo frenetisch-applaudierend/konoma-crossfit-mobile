@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Konoma.CrossFit;
-using Konoma.CrossFit.DependencyInjection;
 using TemperatureConverter.Core.Application.Converter;
 using TemperatureConverter.Core.Application.Login;
 using TemperatureConverter.Core.Services;
@@ -24,11 +23,11 @@ namespace TemperatureConverter.Core.Application
             {
                 if (await _loginService.CheckLoggedInAsync())
                 {
-                    await navigation.ShowHome.GoAsync();
+                    await navigation.ShowHome.NavigateAsync();
                 }
                 else
                 {
-                    await navigation.ShowLogin.GoAsync();
+                    await navigation.ShowLogin.NavigateAsync();
                 }
             }
         }

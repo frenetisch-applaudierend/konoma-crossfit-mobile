@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Konoma.CrossFit.Util
+namespace Konoma.CrossFit
 {
     public static class TaskExtensions
     {

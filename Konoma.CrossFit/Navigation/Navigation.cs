@@ -3,12 +3,6 @@ using System.Threading.Tasks;
 
 namespace Konoma.CrossFit
 {
-    public interface INavigation<TScene>
-        where TScene : Scene
-    {
-        Task GoAsync();
-    }
-
     public static class Navigation
     {
         public static INavigation<TScene> For<TScene>(Action navigator) where TScene : Scene =>
@@ -31,7 +25,7 @@ namespace Konoma.CrossFit
 
             private readonly Func<Task> _navigator;
 
-            public Task GoAsync() => _navigator();
+            public Task NavigateAsync() => _navigator();
         }
     }
 }

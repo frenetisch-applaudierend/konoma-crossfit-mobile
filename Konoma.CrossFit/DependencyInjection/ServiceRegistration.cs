@@ -1,6 +1,7 @@
+using System;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Konoma.CrossFit.DependencyInjection
+namespace Konoma.CrossFit
 {
     public interface IServiceRegistration
     {

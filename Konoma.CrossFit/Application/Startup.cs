@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using Konoma.CrossFit.Util;
 
 namespace Konoma.CrossFit
 {

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Konoma.CrossFit.DependencyInjection;
-using Konoma.CrossFit.Util;
 
 namespace Konoma.CrossFit.Forms
 {

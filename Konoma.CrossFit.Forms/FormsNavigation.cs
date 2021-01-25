@@ -16,7 +16,7 @@ namespace Konoma.CrossFit.Forms
             private readonly Page _currentPage;
             private readonly CrossFitContentPage<TScene> _targetPage;
 
-            public async Task GoAsync() => await _currentPage.Navigation.PushAsync(_targetPage);
+            public async Task NavigateAsync() => await _currentPage.Navigation.PushAsync(_targetPage);
         }
     }
 }

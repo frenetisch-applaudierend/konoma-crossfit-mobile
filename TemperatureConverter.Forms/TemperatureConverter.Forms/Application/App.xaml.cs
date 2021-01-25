@@ -1,5 +1,4 @@
 ﻿using Konoma.CrossFit;
-using Konoma.CrossFit.DependencyInjection;
 using Konoma.CrossFit.Forms;
 using TemperatureConverter.Core.Application;
 using TemperatureConverter.Core.Application.Converter;
