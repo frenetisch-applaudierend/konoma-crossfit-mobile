@@ -1,6 +1,6 @@
 using System;
 
-namespace Konoma.CrossFit
+namespace Konoma.CrossFit.DependencyInjection
 {
     public static class ServiceProviderExtensions
     {

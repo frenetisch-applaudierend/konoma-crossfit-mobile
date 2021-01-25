@@ -1,4 +1,5 @@
 ﻿using Konoma.CrossFit;
+using Konoma.CrossFit.DependencyInjection;
 using Konoma.CrossFit.Forms;
 using TemperatureConverter.Core.Application;
 using TemperatureConverter.Core.Application.Converter;
@@ -26,9 +27,9 @@ namespace TemperatureConverter.Forms.Application
             services.RegisterSingleton<IPreferencesService, DummyPreferencesService>();
         }
 
-        protected override TemperatureConverterApp.IMainNavigation CreateMainNavigation() => new MainNavigation(this);
+        protected override TemperatureConverterCoordinator.IMainNavigation CreateMainNavigation() => new MainNavigation(this);
 
-        class MainNavigation : Konoma.CrossFit.Forms.MainNavigation, TemperatureConverterApp.IMainNavigation
+        class MainNavigation : Konoma.CrossFit.Forms.MainNavigation, TemperatureConverterCoordinator.IMainNavigation
         {
             public MainNavigation(Xamarin.Forms.Application app) : base(app) { }
 
@@ -39,9 +40,9 @@ namespace TemperatureConverter.Forms.Application
     }
 
     public abstract class FormsApp : CrossFitFormsApplication<
-        TemperatureConverterApp,
-        TemperatureConverterApp.Startup,
-        TemperatureConverterApp.IMainNavigation>
+        TemperatureConverterCoordinator,
+        TemperatureConverterCoordinator.Startup,
+        TemperatureConverterCoordinator.IMainNavigation>
     {
     }
 }

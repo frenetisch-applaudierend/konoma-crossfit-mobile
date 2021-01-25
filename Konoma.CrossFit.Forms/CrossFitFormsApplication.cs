@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Konoma.CrossFit.DependencyInjection;
 using Konoma.CrossFit.Util;
 
 namespace Konoma.CrossFit.Forms
 {
     public abstract class
-        CrossFitFormsApplication<TApp, TStartup, TMainNavigation> : Xamarin.Forms.Application
-        where TApp : CrossFitApplication<TStartup, TMainNavigation>, new()
+        CrossFitFormsApplication<TCoordinator, TStartup, TMainNavigation> : Xamarin.Forms.Application
+        where TCoordinator : Coordinator<TStartup, TMainNavigation>, new()
         where TStartup : class, IStartup<TMainNavigation>
     {
         protected void StartApplication()
@@ -20,15 +21,15 @@ namespace Konoma.CrossFit.Forms
             {
                 MainPage = CreateMainPage();
 
-                var app = new TApp();
-                await app.InitializeAsync(
+                var coordinator = new TCoordinator();
+                await coordinator.InitializeAsync(
                     async services =>
                     {
                         services.RegisterSingleton<TStartup>();
                         await RegisterServicesAsync(services);
                     });
 
-                await app.StartApplicationAsync(CreateMainNavigation());
+                await coordinator.StartApplicationAsync(CreateMainNavigation());
             }
             catch (Exception ex)
             {

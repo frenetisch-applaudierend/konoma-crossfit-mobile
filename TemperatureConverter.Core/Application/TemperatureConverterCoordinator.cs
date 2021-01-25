@@ -1,14 +1,15 @@
 using System.Threading.Tasks;
 using Konoma.CrossFit;
+using Konoma.CrossFit.DependencyInjection;
 using TemperatureConverter.Core.Application.Converter;
 using TemperatureConverter.Core.Application.Login;
 using TemperatureConverter.Core.Services;
 
 namespace TemperatureConverter.Core.Application
 {
-    public class TemperatureConverterApp : CrossFitApplication<
-        TemperatureConverterApp.Startup,
-        TemperatureConverterApp.IMainNavigation>
+    public class TemperatureConverterCoordinator : Coordinator<
+        TemperatureConverterCoordinator.Startup,
+        TemperatureConverterCoordinator.IMainNavigation>
     {
         public class Startup : IStartup<IMainNavigation>
         {
