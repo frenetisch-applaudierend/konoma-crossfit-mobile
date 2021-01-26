@@ -1,24 +1,18 @@
 using Konoma.CrossFit;
-// using Konoma.CrossFit.Generators.Bindable;
 
 namespace TemperatureConverter.Core.Application.Login
 {
-    public partial class LoginViewModel : ViewModel
+    public class LoginViewModel : ViewModel
     {
-        /*[Bindable]*/
         private string _username = "";
 
-        /*[Bindable]*/
-        private string _password = "";
-    }
-
-    public partial class LoginViewModel
-    {
         public string Username
         {
             get => _username;
             set => Set(ref _username, value);
         }
+
+        private string _password = "";
 
         public string Password
         {

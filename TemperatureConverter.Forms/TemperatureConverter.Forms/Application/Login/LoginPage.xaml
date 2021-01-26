@@ -5,12 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:forms="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
     xmlns:login="clr-namespace:TemperatureConverter.Core.Application.Login;assembly=TemperatureConverter.Core"
-    x:TypeArguments="login:LoginScene"
-    x:Class="TemperatureConverter.Forms.Application.Login.LoginPage">
+    x:Class="TemperatureConverter.Forms.Application.Login.LoginPage"
+    x:TypeArguments="login:LoginScene, login:LoginViewModel"
+    x:DataType="login:LoginViewModel">
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Hello, Login!"
+            <Label Text="{Binding Username}"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
         </StackLayout>

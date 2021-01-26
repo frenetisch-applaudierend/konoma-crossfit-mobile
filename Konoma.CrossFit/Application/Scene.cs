@@ -21,11 +21,15 @@ namespace Konoma.CrossFit
 
         public static TScene Create<TScene>() where TScene : Scene =>
             ServiceProvider.GetRequiredService<TScene>();
-
-
     }
 
-    public abstract class Scene<TViewModel>
+    public abstract class Scene<TViewModel> : Scene
     {
+        protected Scene(TViewModel viewModel)
+        {
+            ViewModel = viewModel;
+        }
+
+        public TViewModel ViewModel { get; }
     }
 }
