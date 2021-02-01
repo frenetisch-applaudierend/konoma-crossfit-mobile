@@ -35,5 +35,7 @@ namespace Konoma.CrossFit
             if (notify)
                 _onChanged();
         }
+
+        public static implicit operator T(Property<T> property) => property._value;
     }
 }

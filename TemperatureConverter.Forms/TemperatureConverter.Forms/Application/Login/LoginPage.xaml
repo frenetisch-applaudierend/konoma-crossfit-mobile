@@ -10,10 +10,9 @@
     x:DataType="login:LoginScene">
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Username}"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="32">
+            <Entry Text="{Binding Username.Editable}" />
+            <Label Text="{Binding Username}" />
         </StackLayout>
     </ContentPage.Content>
 </forms:CrossFitContentPage>
