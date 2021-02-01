@@ -2,11 +2,15 @@ using Konoma.CrossFit;
 
 namespace TemperatureConverter.Core.Application.Login
 {
-    public class LoginScene : Scene<LoginViewModel>
+    public class LoginScene : Scene
     {
-        public LoginScene() : base(new LoginViewModel())
+        public LoginScene()
         {
-            ViewModel.Username = "Username hier";
+            Username.SetValue("Username hier", notify: false);
         }
+
+        public Property<string> Username => GetProperty("");
+
+        public Property<string> Password => GetProperty("");
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -5,9 +6,27 @@ namespace Konoma.CrossFit
 {
     public abstract class ViewModel : INotifyPropertyChanging, INotifyPropertyChanged
     {
-        public event PropertyChangingEventHandler? PropertyChanging;
+        #region Bindable Property Support
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        private readonly Dictionary<string, object> _propertyStorage = new Dictionary<string, object>();
+
+        protected Property<T> GetProperty<T>(T initialValue, [CallerMemberName] string propertyName = default!)
+        {
+            if (_propertyStorage.TryGetValue(propertyName, out var existing))
+                return (Property<T>)existing;
+
+            var property = new Property<T>(
+                initialValue: initialValue,
+                onChanging: () => NotifyPropertyChanging(propertyName),
+                onChanged: () => NotifyPropertyChanged(propertyName));
+
+            _propertyStorage[propertyName] = property;
+            return property;
+        }
+
+        #endregion
+
+        #region Custom Properties Support
 
         protected void Set<T>(ref T field, T value, [CallerMemberName] string propertyName = default!)
         {
@@ -19,10 +38,20 @@ namespace Konoma.CrossFit
             NotifyPropertyChanged(propertyName);
         }
 
+        #endregion
+
+        #region INotifyPropertyChanging and INotifyPropertyChanged
+
+        public event PropertyChangingEventHandler? PropertyChanging;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         protected void NotifyPropertyChanging(string propertyName) =>
             this.PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(propertyName));
 
         protected void NotifyPropertyChanged(string propertyName) =>
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        #endregion
     }
 }

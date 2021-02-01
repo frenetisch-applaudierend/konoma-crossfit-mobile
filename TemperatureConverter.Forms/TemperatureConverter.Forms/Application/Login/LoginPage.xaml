@@ -6,8 +6,8 @@
     xmlns:forms="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
     xmlns:login="clr-namespace:TemperatureConverter.Core.Application.Login;assembly=TemperatureConverter.Core"
     x:Class="TemperatureConverter.Forms.Application.Login.LoginPage"
-    x:TypeArguments="login:LoginScene, login:LoginViewModel"
-    x:DataType="login:LoginViewModel">
+    x:TypeArguments="login:LoginScene"
+    x:DataType="login:LoginScene">
 
     <ContentPage.Content>
         <StackLayout>

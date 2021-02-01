@@ -2,7 +2,7 @@ using System;
 
 namespace Konoma.CrossFit
 {
-    public abstract class Scene
+    public abstract class Scene : ViewModel
     {
         internal static IServiceProvider ServiceProvider { get; set; } = default!;
 
@@ -21,15 +21,5 @@ namespace Konoma.CrossFit
 
         public static TScene Create<TScene>() where TScene : Scene =>
             ServiceProvider.GetRequiredService<TScene>();
-    }
-
-    public abstract class Scene<TViewModel> : Scene
-    {
-        protected Scene(TViewModel viewModel)
-        {
-            ViewModel = viewModel;
-        }
-
-        public TViewModel ViewModel { get; }
     }
 }
