@@ -26,15 +26,16 @@ namespace TemperatureConverter.Forms.Application
             services.RegisterSingleton<IPreferencesService, DummyPreferencesService>();
         }
 
-        protected override TemperatureConverterCoordinator.IMainNavigation CreateMainNavigation() => new MainNavigation(this);
+        protected override TemperatureConverterCoordinator.IMainNavigation CreateMainNavigation() =>
+            new MainNavigation(this);
 
         class MainNavigation : Konoma.CrossFit.Forms.MainNavigation, TemperatureConverterCoordinator.IMainNavigation
         {
             public MainNavigation(Xamarin.Forms.Application app) : base(app) { }
 
-            public INavigation<LoginScene> ShowLogin => Show(new LoginPage());
+            public INavigation<LoginScene> ShowLogin => Show(new LoginPage(), wrap: true);
 
-            public INavigation<ConverterScene> ShowHome => Show(new ConverterPage());
+            public INavigation<ConverterScene> ShowHome => Show(new ConverterPage(), wrap: true);
         }
     }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:TemperatureConverter.Forms.Application.Common;assembly=TemperatureConverter.Forms"
+             x:Class="TemperatureConverter.Forms.Application.Common.LabeledEntry"
+             x:DataType="common:LabeledEntry">
+    <StackLayout Orientation="Vertical">
+        <Label x:Name="LabelView" />
+        <Entry x:Name="TextView" Text="{Binding Text}" />
+    </StackLayout>
+</ContentView>

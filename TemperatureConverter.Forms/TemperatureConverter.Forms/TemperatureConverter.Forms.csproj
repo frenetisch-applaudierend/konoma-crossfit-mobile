@@ -23,5 +23,9 @@
         <DependentUpon>App.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Application\Common\LabeledEntry.xaml.cs">
+        <DependentUpon>LabeledEntry.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

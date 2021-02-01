@@ -4,10 +4,9 @@ namespace TemperatureConverter.Core.Application.Login
 {
     public class LoginScene : Scene
     {
-        public LoginScene()
-        {
-            Username.SetValue("Username hier", notify: false);
-        }
+        public string UsernameLabel { get; } = "Username";
+
+        public string PasswordLabel { get; } = "Password";
 
         public Property<string> Username => GetProperty("");
 

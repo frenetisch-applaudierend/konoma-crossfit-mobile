@@ -5,14 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:forms="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
     xmlns:login="clr-namespace:TemperatureConverter.Core.Application.Login;assembly=TemperatureConverter.Core"
+    xmlns:common="clr-namespace:TemperatureConverter.Forms.Application.Common;assembly=TemperatureConverter.Forms"
     x:Class="TemperatureConverter.Forms.Application.Login.LoginPage"
     x:TypeArguments="login:LoginScene"
     x:DataType="login:LoginScene">
 
     <ContentPage.Content>
         <StackLayout Padding="32">
-            <Entry Text="{Binding Username.Editable}" />
-            <Label Text="{Binding Username}" />
+            <common:LabeledEntry Label="{Binding UsernameLabel}" Text="{Binding Username.Editable}" />
+            <common:LabeledEntry Label="{Binding PasswordLabel}" Text="{Binding Password.Editable}" />
         </StackLayout>
     </ContentPage.Content>
 </forms:CrossFitContentPage>
