@@ -8,12 +8,14 @@
     xmlns:common="clr-namespace:TemperatureConverter.Forms.Application.Common;assembly=TemperatureConverter.Forms"
     x:Class="TemperatureConverter.Forms.Application.Login.LoginPage"
     x:TypeArguments="login:LoginScene"
-    x:DataType="login:LoginScene">
+    x:DataType="login:LoginScene"
+    Title="{Binding ScreenTitle}">
 
     <ContentPage.Content>
-        <StackLayout Padding="32">
+        <StackLayout Padding="32" Spacing="24">
             <common:LabeledEntry Label="{Binding UsernameLabel}" Text="{Binding Username.Editable}" />
             <common:LabeledEntry Label="{Binding PasswordLabel}" Text="{Binding Password.Editable}" />
+            <Button Text="{Binding LoginButtonTitle}" Command="{Binding SignInCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </forms:CrossFitContentPage>
