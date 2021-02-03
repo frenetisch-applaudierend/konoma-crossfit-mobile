@@ -86,38 +86,80 @@
         <CodesignKey>iPhone Distribution</CodesignKey>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     </PropertyGroup>
+    <PropertyGroup>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    </PropertyGroup>
     <ItemGroup>
-        <Compile Include="Main.cs" />
-        <Compile Include="AppDelegate.cs" />
-        <None Include="Entitlements.plist" />
-        <None Include="Info.plist" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Main.cs"/>
+        <Compile Include="AppDelegate.cs"/>
+        <None Include="Entitlements.plist"/>
+        <None Include="Info.plist"/>
+        <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
-        <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+        <InterfaceDefinition Include="Resources\LaunchScreen.storyboard"/>
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
+            <Visible>false</Visible>
+        </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
             <Visible>false</Visible>
         </ImageAsset>
     </ItemGroup>
     <ItemGroup>
-        <Reference Include="System" />
-        <Reference Include="System.Xml" />
-        <Reference Include="System.Core" />
-        <Reference Include="Xamarin.iOS" />
+        <Reference Include="System"/>
+        <Reference Include="System.Xml"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="Xamarin.iOS"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.6.1"/>
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj">
-          <Project>{58b4508d-bdaa-40cd-af0d-5df6fa055a1f}</Project>
-          <Name>Konoma.CrossFit.Forms</Name>
+            <Project>{58b4508d-bdaa-40cd-af0d-5df6fa055a1f}</Project>
+            <Name>Konoma.CrossFit.Forms</Name>
         </ProjectReference>
         <ProjectReference Include="..\TemperatureConverter.Forms\TemperatureConverter.Forms.csproj">
             <Project>{B4152CC8-223F-48E4-9EDF-63FB556EB343}</Project>
             <Name>TemperatureConverter.Forms</Name>
         </ProjectReference>
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets"/>
 </Project>
