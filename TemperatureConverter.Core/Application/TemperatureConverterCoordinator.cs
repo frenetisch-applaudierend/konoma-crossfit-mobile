@@ -33,6 +33,8 @@ namespace TemperatureConverter.Core.Application
             }
         }
 
+        #error Remove IMainNavigation and replace with NavigationPoint properties in startup.
+
         public interface IMainNavigation
         {
             public INavigation<LoginScene> ShowLogin { get; }

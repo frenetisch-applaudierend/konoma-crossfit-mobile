@@ -27,10 +27,12 @@ namespace Konoma.CrossFit.iOS
             await Coordinator.InitializeAsync(
                 async services =>
                 {
+                    #error Move TStartup registration to Coordinator itself
                     services.AddSingleton<TStartup>();
                     await RegisterServicesAsync(services);
                 });
 
+            #error Resist the urge to combine this with InitializeAsync -> you might want to implement SceneDelegate
             await Coordinator.StartApplicationAsync(CreateMainNavigation());
         }
 
@@ -56,6 +58,7 @@ namespace Konoma.CrossFit.iOS
             return Task.CompletedTask;
         }
 
+        #error Remove
         protected virtual void RegisterServices(IServiceRegistration services)
         {
         }

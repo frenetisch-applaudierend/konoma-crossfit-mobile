@@ -37,6 +37,7 @@ namespace Konoma.CrossFit
             return Task.CompletedTask;
         }
 
+        #error Remove Synchronous Method and just use Async
         protected virtual void RegisterServices(IServiceRegistration services) { }
 
         protected virtual Task RegisterScenesAsync(ISceneRegistration scenes)
