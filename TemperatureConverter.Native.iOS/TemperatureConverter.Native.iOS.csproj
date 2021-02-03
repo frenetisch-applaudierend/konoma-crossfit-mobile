@@ -10,6 +10,9 @@
         <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
         <AssemblyName>TemperatureConverter.Native.iOS</AssemblyName>
         <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
         <DebugSymbols>true</DebugSymbols>
@@ -23,6 +26,9 @@
         <MtouchArch>x86_64</MtouchArch>
         <MtouchLink>None</MtouchLink>
         <MtouchDebug>true</MtouchDebug>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>none</DebugType>
@@ -33,6 +39,9 @@
         <MtouchLink>None</MtouchLink>
         <MtouchArch>x86_64</MtouchArch>
         <ConsolePause>false</ConsolePause>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
@@ -47,6 +56,9 @@
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <CodesignKey>iPhone Developer</CodesignKey>
         <MtouchDebug>true</MtouchDebug>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>none</DebugType>
@@ -58,20 +70,33 @@
         <MtouchArch>ARM64</MtouchArch>
         <ConsolePause>false</ConsolePause>
         <CodesignKey>iPhone Developer</CodesignKey>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="Main.cs"/>
-        <Compile Include="AppDelegate.cs"/>
-        <None Include="Info.plist"/>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
-        <Content Include="Entitlements.plist"/>
-        <InterfaceDefinition Include="LaunchScreen.storyboard"/>
+        <Compile Include="Application\AppDelegate.cs" />
+        <Compile Include="Main.cs" />
+        <Compile Include="Services\PreferencesService.cs" />
+        <None Include="Info.plist" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Content Include="Entitlements.plist" />
+        <InterfaceDefinition Include="LaunchScreen.storyboard" />
+        <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-        <Reference Include="System"/>
-        <Reference Include="System.Xml"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="Xamarin.iOS"/>
+        <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+          <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.5.0.1\lib\netstandard2.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+          <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Core" />
+        <Reference Include="Xamarin.iOS" />
     </ItemGroup>
     <ItemGroup>
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -118,7 +143,21 @@
         </ImageAsset>
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Resources\"/>
+        <Folder Include="Resources\" />
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets"/>
+    <ItemGroup>
+      <ProjectReference Include="..\Konoma.CrossFit.iOS\Konoma.CrossFit.iOS.csproj">
+        <Project>{2ea35a6e-b07d-4f8b-a522-8dc806685a69}</Project>
+        <Name>Konoma.CrossFit.iOS</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj">
+        <Project>{c078f0fa-b85e-4690-b1cc-c4f730ea86ef}</Project>
+        <Name>Konoma.CrossFit</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\TemperatureConverter.Core\TemperatureConverter.Core.csproj">
+        <Project>{b85b25f7-7346-48b5-8567-74f1b23c5194}</Project>
+        <Name>TemperatureConverter.Core</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

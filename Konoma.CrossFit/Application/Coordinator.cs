@@ -25,7 +25,7 @@ namespace Konoma.CrossFit
 
         internal async Task StartApplicationAsync(TMainNavigation mainNavigation)
         {
-            var startup = ServiceProviderExtensions.GetRequiredService<TStartup>(ServiceProvider);
+            var startup = ServiceProvider.GetRequiredService<TStartup>();
             await startup.StartApplicationAsync(mainNavigation);
         }
 

@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Konoma.CrossFit;
+using Microsoft.Extensions.DependencyInjection;
 using TemperatureConverter.Core.Application.Converter;
 using TemperatureConverter.Core.Application.Login;
 using TemperatureConverter.Core.Services;
