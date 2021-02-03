@@ -1,21 +1,20 @@
-using System;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Konoma.CrossFit
 {
     public interface IServiceRegistration
     {
-        void RegisterSingleton<TService>()
+        void AddSingleton<TService>()
             where TService : class;
 
-        void RegisterSingleton<TService, TServiceImpl>()
+        void AddSingleton<TService, TServiceImpl>()
             where TService : class
             where TServiceImpl : class, TService;
 
-        void RegisterTransient<TService>()
+        void AddTransient<TService>()
             where TService : class;
 
-        void RegisterTransient<TService, TServiceImpl>()
+        void AddTransient<TService, TServiceImpl>()
             where TService : class
             where TServiceImpl : class, TService;
     }
@@ -29,20 +28,20 @@ namespace Konoma.CrossFit
 
         private readonly IServiceCollection _services;
 
-        public void RegisterSingleton<TService>()
+        public void AddSingleton<TService>()
             where TService : class
             => _services.AddSingleton<TService>();
 
-        public void RegisterSingleton<TService, TServiceImpl>()
+        public void AddSingleton<TService, TServiceImpl>()
             where TService : class
             where TServiceImpl : class, TService
             => _services.AddSingleton<TService, TServiceImpl>();
 
-        public void RegisterTransient<TService>()
+        public void AddTransient<TService>()
             where TService : class
             => _services.AddTransient<TService>();
 
-        public void RegisterTransient<TService, TServiceImpl>()
+        public void AddTransient<TService, TServiceImpl>()
             where TService : class
             where TServiceImpl : class, TService
             => _services.AddTransient<TService, TServiceImpl>();

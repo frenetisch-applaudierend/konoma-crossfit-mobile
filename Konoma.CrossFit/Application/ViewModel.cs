@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -10,16 +11,20 @@ namespace Konoma.CrossFit
 
         private readonly Dictionary<string, object> _propertyStorage = new Dictionary<string, object>();
 
-        protected PropertyBuilder<T> GetProperty<T>(T initialValue, [CallerMemberName] string propertyName = default!)
+        protected Property<T> GetProperty<T>(T initialValue, Action? onChanged = default,
+            [CallerMemberName] string propertyName = default!)
         {
             if (_propertyStorage.TryGetValue(propertyName, out var existing))
-                return (PropertyBuilder<T>)existing;
+                return (Property<T>)existing;
 
-            var builder = new PropertyBuilder<T>(
-                name: propertyName,
+            var builder = new Property<T>(
                 initialValue: initialValue,
                 onChanging: () => NotifyPropertyChanging(propertyName),
-                onChanged: () => NotifyPropertyChanged(propertyName));
+                onChanged: () =>
+                {
+                    onChanged?.Invoke();
+                    NotifyPropertyChanged(propertyName);
+                });
 
             _propertyStorage[propertyName] = builder;
             return builder;

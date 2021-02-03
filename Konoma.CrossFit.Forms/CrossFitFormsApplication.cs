@@ -23,7 +23,7 @@ namespace Konoma.CrossFit.Forms
                 await coordinator.InitializeAsync(
                     async services =>
                     {
-                        services.RegisterSingleton<TStartup>();
+                        services.AddSingleton<TStartup>();
                         await RegisterServicesAsync(services);
                     });
 

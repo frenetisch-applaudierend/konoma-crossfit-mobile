@@ -12,11 +12,15 @@ namespace Konoma.CrossFit
             public void NotifyCanExecuteChanged() => this.Command?.NotifyCanExecuteChanged();
         }
 
+        public Command(Action action) : this(null!, action) { }
+
         public Command(Control control, Action action)
         {
             _action = action;
 
-            control.Command = this;
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            if (!(control is null))
+                control.Command = this;
         }
 
         private readonly Action _action;

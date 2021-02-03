@@ -41,7 +41,8 @@ namespace TemperatureConverter.Core.Application
 
         protected override void RegisterServices(IServiceRegistration services)
         {
-            services.RegisterSingleton<LoginService>();
+            services.AddSingleton<LoginService>();
+            services.AddSingleton<TemperatureConverterService>();
         }
     }
 }

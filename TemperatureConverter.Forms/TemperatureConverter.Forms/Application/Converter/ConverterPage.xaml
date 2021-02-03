@@ -4,15 +4,19 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:forms="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
-    xmlns:converter="clr-namespace:TemperatureConverter.Core.Application.Converter;assembly=TemperatureConverter.Core"
-    x:TypeArguments="converter:ConverterScene"
-    x:Class="TemperatureConverter.Forms.Application.Converter.ConverterPage">
-
+    xmlns:core="clr-namespace:TemperatureConverter.Core.Application.Converter;assembly=TemperatureConverter.Core"
+    xmlns:common="clr-namespace:TemperatureConverter.Forms.Application.Common;assembly=TemperatureConverter.Forms"
+    x:TypeArguments="core:ConverterScene"
+    x:DataType="core:ConverterScene"
+    x:Class="TemperatureConverter.Forms.Application.Converter.ConverterPage"
+    Title="{Binding ScreenTitle}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding LogoutButton}" Command="{Binding SignOutCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Hello, Converter!!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="32" Spacing="24">
+            <common:LabeledEntry Label="{Binding CelsiusLabel}" Text="{Binding Celsius.Editable}" />
+            <common:LabeledEntry Label="{Binding FahrenheitLabel}" Text="{Binding Fahrenheit.Editable}" />
         </StackLayout>
     </ContentPage.Content>
 </forms:CrossFitContentPage>
