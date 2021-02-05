@@ -8,6 +8,7 @@ using TemperatureConverter.Forms.Application.Converter;
 using TemperatureConverter.Forms.Application.Login;
 using TemperatureConverter.Forms.Services;
 using Xamarin.Forms.Xaml;
+using Navigation = Konoma.CrossFit.Forms.Navigation;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
@@ -21,28 +22,18 @@ namespace TemperatureConverter.Forms.Application
             StartApplication();
         }
 
-        protected override void RegisterServices(IServiceRegistration services)
+        protected override void RegisterPlattformServices(IServiceRegistration services)
         {
             services.AddSingleton<IPreferencesService, PreferencesService>();
         }
 
-        protected override TemperatureConverterCoordinator.IMainNavigation CreateMainNavigation() =>
-            new MainNavigation(this);
-    }
+        protected override void RegisterNavigationPoints(TemperatureConverterCoordinator coordinator)
+        {
+            coordinator.ShowLogin.RegisterNavigation(
+                new Navigation.MainPage<LoginScene>(this, () => new LoginPage()));
 
-    public class MainNavigation : Konoma.CrossFit.Forms.MainNavigation, TemperatureConverterCoordinator.IMainNavigation
-    {
-        public MainNavigation(Xamarin.Forms.Application app) : base(app) { }
-
-        public INavigation<LoginScene> ShowLogin => Show(new LoginPage(), wrap: true);
-
-        public INavigation<ConverterScene> ShowHome => Show(new ConverterPage(), wrap: true);
-    }
-
-    public abstract class FormsApp : CrossFitFormsApplication<
-        TemperatureConverterCoordinator,
-        TemperatureConverterCoordinator.Startup,
-        TemperatureConverterCoordinator.IMainNavigation>
-    {
+            coordinator.ShowHome.RegisterNavigation(
+                new Navigation.MainPage<ConverterScene>(this, () => new ConverterPage()));
+        }
     }
 }

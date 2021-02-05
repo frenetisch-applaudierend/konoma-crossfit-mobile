@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace Konoma.CrossFit.Forms
 {
-    public abstract class FormsNavigation
+    public static class Navigation
     {
         public class Push<TScene> : INavigation<TScene> where TScene : Scene
         {
@@ -37,9 +37,27 @@ namespace Konoma.CrossFit.Forms
                 await _currentPage.Navigation.PopAsync();
             }
         }
+
+        public class MainPage<TScene> : INavigation<TScene> where TScene : Scene
+        {
+            public MainPage(Application application, Func<CrossFitContentPage<TScene>> targetPage)
+            {
+                _application = application;
+                _targetPage = targetPage;
+            }
+
+            private readonly Application _application;
+            private readonly Func<CrossFitContentPage<TScene>> _targetPage;
+
+            public Task NavigateAsync()
+            {
+                _application.MainPage = _targetPage();
+                return Task.CompletedTask;
+            }
+        }
     }
 
-    public static class NavigationPointFormsNavigationExtensions
+    public static class NavigationPointRegistrationExtensions
     {
         public static void RegisterPush<TScene>(
             this NavigationPoint<TScene> navigationPoint,
@@ -47,7 +65,7 @@ namespace Konoma.CrossFit.Forms
             Func<CrossFitContentPage<TScene>> targetPage)
             where TScene : Scene
         {
-            navigationPoint.RegisterNavigation(new FormsNavigation.Push<TScene>(currentPage, targetPage));
+            navigationPoint.RegisterNavigation(new Navigation.Push<TScene>(currentPage, targetPage));
         }
 
         public static void RegisterReplace<TScene>(
@@ -56,7 +74,16 @@ namespace Konoma.CrossFit.Forms
             Func<CrossFitContentPage<TScene>> targetPage)
             where TScene : Scene
         {
-            navigationPoint.RegisterNavigation(new FormsNavigation.Replace<TScene>(currentPage, targetPage));
+            navigationPoint.RegisterNavigation(new Navigation.Replace<TScene>(currentPage, targetPage));
+        }
+
+        public static void RegisterMainPage<TScene>(
+            this NavigationPoint<TScene> navigationPoint,
+            Application application,
+            Func<CrossFitContentPage<TScene>> targetPage)
+            where TScene : Scene
+        {
+            navigationPoint.RegisterNavigation(new Navigation.MainPage<TScene>(application, targetPage));
         }
     }
 }

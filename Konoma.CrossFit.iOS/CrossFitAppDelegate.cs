@@ -4,9 +4,8 @@ using UIKit;
 
 namespace Konoma.CrossFit.iOS
 {
-    public abstract class CrossFitAppDelegate<TCoordinator, TStartup, TMainNavigation> : UIApplicationDelegate
-        where TCoordinator : Coordinator<TStartup, TMainNavigation>, new()
-        where TStartup : class, IStartup<TMainNavigation>
+    public abstract class CrossFitAppDelegate<TCoordinator> : UIApplicationDelegate
+        where TCoordinator : Coordinator, new()
     {
         public override UIWindow? Window { get; set; }
 
@@ -24,16 +23,9 @@ namespace Konoma.CrossFit.iOS
 
         private async Task StartApplicationAsync()
         {
-            await Coordinator.InitializeAsync(
-                async services =>
-                {
-                    #error Move TStartup registration to Coordinator itself
-                    services.AddSingleton<TStartup>();
-                    await RegisterServicesAsync(services);
-                });
-
-            #error Resist the urge to combine this with InitializeAsync -> you might want to implement SceneDelegate
-            await Coordinator.StartApplicationAsync(CreateMainNavigation());
+            await Coordinator.InitializeAsync(RegisterPlatformServicesAsync);
+            RegisterNavigationPoints(Coordinator);
+            await Coordinator.StartApplicationAsync();
         }
 
         #region Extension Points
@@ -52,18 +44,17 @@ namespace Konoma.CrossFit.iOS
             }
         }
 
-        protected virtual Task RegisterServicesAsync(IServiceRegistration services)
+        protected virtual Task RegisterPlatformServicesAsync(IServiceRegistration services)
         {
-            RegisterServices(services);
+            RegisterPlatformServices(services);
             return Task.CompletedTask;
         }
 
-        #error Remove
-        protected virtual void RegisterServices(IServiceRegistration services)
+        protected virtual void RegisterPlatformServices(IServiceRegistration services)
         {
         }
 
-        protected abstract TMainNavigation CreateMainNavigation();
+        protected abstract void RegisterNavigationPoints(TCoordinator coordinator);
 
         #endregion
     }

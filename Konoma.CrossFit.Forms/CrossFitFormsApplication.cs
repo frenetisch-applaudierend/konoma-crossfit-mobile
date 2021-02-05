@@ -3,10 +3,8 @@ using System.Threading.Tasks;
 
 namespace Konoma.CrossFit.Forms
 {
-    public abstract class
-        CrossFitFormsApplication<TCoordinator, TStartup, TMainNavigation> : Xamarin.Forms.Application
-        where TCoordinator : Coordinator<TStartup, TMainNavigation>, new()
-        where TStartup : class, IStartup<TMainNavigation>
+    public abstract class CrossFitFormsApplication<TCoordinator> : Xamarin.Forms.Application
+        where TCoordinator : Coordinator, new()
     {
         protected void StartApplication()
         {
@@ -20,14 +18,9 @@ namespace Konoma.CrossFit.Forms
                 MainPage = CreateMainPage();
 
                 var coordinator = new TCoordinator();
-                await coordinator.InitializeAsync(
-                    async services =>
-                    {
-                        services.AddSingleton<TStartup>();
-                        await RegisterServicesAsync(services);
-                    });
-
-                await coordinator.StartApplicationAsync(CreateMainNavigation());
+                await coordinator.InitializeAsync(RegisterPlattformServicesAsync);
+                RegisterNavigationPoints(coordinator);
+                await coordinator.StartApplicationAsync();
             }
             catch (Exception ex)
             {
@@ -36,18 +29,18 @@ namespace Konoma.CrossFit.Forms
             }
         }
 
-        protected virtual Task RegisterServicesAsync(IServiceRegistration services)
+        protected virtual Task RegisterPlattformServicesAsync(IServiceRegistration services)
         {
-            RegisterServices(services);
+            RegisterPlattformServices(services);
             return Task.CompletedTask;
         }
 
-        protected virtual void RegisterServices(IServiceRegistration services)
+        protected virtual void RegisterPlattformServices(IServiceRegistration services)
         {
         }
 
-        protected virtual Xamarin.Forms.Page CreateMainPage() => new Xamarin.Forms.Page();
+        protected abstract void RegisterNavigationPoints(TCoordinator coordinator);
 
-        protected abstract TMainNavigation CreateMainNavigation();
+        protected virtual Xamarin.Forms.Page CreateMainPage() => new Xamarin.Forms.Page();
     }
 }

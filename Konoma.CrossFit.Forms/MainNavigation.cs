@@ -15,7 +15,7 @@ namespace Konoma.CrossFit.Forms
             where TScene : Scene
         {
             var rootPage = wrap ? (Page)new NavigationPage(page) : page;
-            return Navigation.For<TScene>(() => _application.MainPage = rootPage);
+            return CrossFit.Navigation.For<TScene>(() => _application.MainPage = rootPage);
         }
     }
 }

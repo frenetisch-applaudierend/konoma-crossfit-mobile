@@ -5,9 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Konoma.CrossFit
 {
-    public abstract class Coordinator<TStartup, TMainNavigation>
-        where TStartup : IStartup<TMainNavigation>
+    public abstract class Coordinator
     {
+        public IServiceProvider ServiceProvider { get; private set; } = default!;
+
         internal async Task InitializeAsync(Func<IServiceRegistration, Task> registerInternalServices)
         {
             var services = new ServiceCollection();
@@ -23,41 +24,26 @@ namespace Konoma.CrossFit
             Scene.ServiceProvider = ServiceProvider;
         }
 
-        internal async Task StartApplicationAsync(TMainNavigation mainNavigation)
+        protected virtual async Task RegisterScenesAsync(ISceneRegistration scenes)
         {
-            var startup = ServiceProvider.GetRequiredService<TStartup>();
-            await startup.StartApplicationAsync(mainNavigation);
+            await RegisterScenesFromAssemlyAsync(scenes, GetType().Assembly);
         }
 
-        public IServiceProvider ServiceProvider { get; private set; } = default!;
-
-        protected virtual Task RegisterServicesAsync(IServiceRegistration services)
+        protected async Task RegisterScenesFromAssemlyAsync(ISceneRegistration scenes, Assembly assembly)
         {
-            RegisterServices(services);
-            return Task.CompletedTask;
+            await Task.Run(
+                () =>
+                {
+                    foreach (var type in assembly.DefinedTypes)
+                    {
+                        if (Scene.IsSceneType(type))
+                            scenes.RegisterScene(type);
+                    }
+                });
         }
 
-        #error Remove Synchronous Method and just use Async
-        protected virtual void RegisterServices(IServiceRegistration services) { }
+        protected abstract Task RegisterServicesAsync(IServiceRegistration services);
 
-        protected virtual Task RegisterScenesAsync(ISceneRegistration scenes)
-        {
-            RegisterScenes(scenes);
-            return Task.CompletedTask;
-        }
-
-        protected virtual void RegisterScenes(ISceneRegistration scenes)
-        {
-            RegisterScenesFromAssemly(scenes, GetType().Assembly);
-        }
-
-        protected void RegisterScenesFromAssemly(ISceneRegistration scenes, Assembly assembly)
-        {
-            foreach (var type in assembly.DefinedTypes)
-            {
-                if (Scene.IsSceneType(type))
-                    scenes.RegisterScene(type);
-            }
-        }
+        public abstract Task StartApplicationAsync();
     }
 }

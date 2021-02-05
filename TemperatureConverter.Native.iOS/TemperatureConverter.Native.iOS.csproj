@@ -76,6 +76,8 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Application\AppDelegate.cs" />
+        <Compile Include="Application\Converter\ConverterViewController.cs" />
+        <Compile Include="Application\Login\LoginViewController.cs" />
         <Compile Include="Main.cs" />
         <Compile Include="Services\PreferencesService.cs" />
         <None Include="Info.plist" />
