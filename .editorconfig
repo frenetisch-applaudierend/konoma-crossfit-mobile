@@ -9,6 +9,7 @@ indent_style = space
 # ReSharper properties
 resharper_csharp_wrap_after_declaration_lpar = true
 resharper_csharp_wrap_parameters_style = chop_if_long
+resharper_keep_existing_expr_member_arrangement = true
 
 # Code files
 [*.{cs,csx,vb,vbx}]

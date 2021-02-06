@@ -2,9 +2,9 @@ using System;
 
 namespace Konoma.CrossFit
 {
-    public sealed class Binding<T> : IDisposable
+    public sealed class PropertyBinding<T> : IDisposable
     {
-        public Binding(BindingEndpoint<T> source, BindingEndpoint<T> target)
+        public PropertyBinding(BindingEndpoint<T> source, BindingEndpoint<T> target)
         {
             _source = source;
             _target = target;

@@ -49,7 +49,9 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Bindings\Binder.cs" />
-        <Compile Include="Bindings\Binding.cs" />
+        <Compile Include="Bindings\CommandBinding.cs" />
+        <Compile Include="Bindings\CommandTarget.cs" />
+        <Compile Include="Bindings\PropertyBinding.cs" />
         <Compile Include="Bindings\BindingEndpoint.cs" />
         <Compile Include="Bindings\PropertyExpressionParser.cs" />
         <Compile Include="CrossFitAppDelegate.cs" />
