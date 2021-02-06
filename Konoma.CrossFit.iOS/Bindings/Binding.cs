@@ -8,29 +8,31 @@ namespace Konoma.CrossFit
         {
             _source = source;
             _target = target;
+
+            source.OnChanged = HandleSourceUpdated;
+            target.OnChanged = HandleTargetUpdated;
         }
 
         private readonly BindingEndpoint<T> _source;
         private readonly BindingEndpoint<T> _target;
 
-        //
-        // public void HandleSourceUpdated()
-        // {
-        //     if (!(_target.Setter is { } setter))
-        //         return;
-        //
-        //     var value = _source.Getter.Invoke();
-        //     setter.Invoke(value);
-        // }
-        //
-        // public void HandleTargetUpdated()
-        // {
-        //     if (!(_source.Setter is { } setter))
-        //         return;
-        //
-        //     var value = _target.Getter.Invoke();
-        //     setter.Invoke(value);
-        // }
+        public void HandleSourceUpdated()
+        {
+            if (!_target.Writable)
+                return;
+
+            var value = _source.GetValue();
+            _target.SetValue(value);
+        }
+
+        public void HandleTargetUpdated()
+        {
+            if (!_source.Writable)
+                return;
+
+            var value = _target.GetValue();
+            _source.SetValue(value);
+        }
 
         public void Dispose()
         {

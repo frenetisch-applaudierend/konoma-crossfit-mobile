@@ -51,6 +51,7 @@
         <Compile Include="Bindings\Binder.cs" />
         <Compile Include="Bindings\Binding.cs" />
         <Compile Include="Bindings\BindingEndpoint.cs" />
+        <Compile Include="Bindings\PropertyExpressionParser.cs" />
         <Compile Include="CrossFitAppDelegate.cs" />
         <Compile Include="CrossFitViewController.cs" />
         <Compile Include="ICrossFitViewController.cs" />
