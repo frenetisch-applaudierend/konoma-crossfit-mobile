@@ -2,7 +2,7 @@
 using Foundation;
 using UIKit;
 
-namespace Konoma.CrossFit.iOS
+namespace Konoma.CrossFit
 {
     public abstract class CrossFitAppDelegate<TCoordinator> : UIApplicationDelegate
         where TCoordinator : Coordinator, new()

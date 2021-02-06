@@ -1,6 +1,6 @@
 using UIKit;
 
-namespace Konoma.CrossFit.iOS
+namespace Konoma.CrossFit
 {
     public interface ICrossFitViewController<TScene>
         where TScene : Scene

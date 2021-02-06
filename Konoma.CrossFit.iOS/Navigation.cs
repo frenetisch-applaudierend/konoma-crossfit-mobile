@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using UIKit;
 
-namespace Konoma.CrossFit.iOS
+namespace Konoma.CrossFit
 {
     public static class Navigation
     {

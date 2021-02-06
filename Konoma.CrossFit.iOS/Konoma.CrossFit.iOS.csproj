@@ -8,7 +8,7 @@
         <ProjectGuid>{2EA35A6E-B07D-4F8B-A522-8DC806685A69}</ProjectGuid>
         <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <OutputType>Library</OutputType>
-        <RootNamespace>Konoma.CrossFit.iOS</RootNamespace>
+        <RootNamespace>Konoma.CrossFit</RootNamespace>
         <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
         <AssemblyName>Konoma.CrossFit.iOS</AssemblyName>
     </PropertyGroup>
@@ -48,7 +48,11 @@
         <Folder Include="Resources\" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Bindings\Binder.cs" />
+        <Compile Include="Bindings\Binding.cs" />
+        <Compile Include="Bindings\BindingEndpoint.cs" />
         <Compile Include="CrossFitAppDelegate.cs" />
+        <Compile Include="CrossFitViewController.cs" />
         <Compile Include="ICrossFitViewController.cs" />
         <Compile Include="Navigation.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

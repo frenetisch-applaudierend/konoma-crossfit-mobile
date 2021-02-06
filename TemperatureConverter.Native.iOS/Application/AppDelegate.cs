@@ -1,5 +1,4 @@
 ﻿using Konoma.CrossFit;
-using Konoma.CrossFit.iOS;
 using TemperatureConverter.Core.Application;
 using TemperatureConverter.Core.Services;
 using TemperatureConverter.Native.iOS.Application.Converter;
