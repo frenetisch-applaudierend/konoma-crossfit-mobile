@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using System.Windows.Input;
 
 namespace Konoma.CrossFit
 {
@@ -20,5 +21,8 @@ namespace Konoma.CrossFit
             var source = BindingEndpoint<T>.Create(_scene, sceneProperty);
             return new PropertyBindingBuilder<T>(_registry, source);
         }
+
+        public CommandBindingBuilder Bind(ICommand command) =>
+            new CommandBindingBuilder(_registry, command);
     }
 }

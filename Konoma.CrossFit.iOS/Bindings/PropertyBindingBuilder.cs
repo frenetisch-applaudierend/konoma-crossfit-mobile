@@ -7,18 +7,11 @@ namespace Konoma.CrossFit
     {
         private readonly BindingRegistry _registry;
         private readonly BindingEndpoint<T> _sourceEndpoint;
-        private bool _registered;
 
         public PropertyBindingBuilder(BindingRegistry registry, BindingEndpoint<T> sourceEndpoint)
         {
             _registry = registry;
             _sourceEndpoint = sourceEndpoint;
-        }
-
-        ~PropertyBindingBuilder()
-        {
-            if (!_registered)
-                throw new InvalidOperationException("Binding must end with a To(...) call to register binding");
         }
 
         public void To<TTarget>(
@@ -32,7 +25,6 @@ namespace Konoma.CrossFit
             var binding = new PropertyBinding<T>(_sourceEndpoint, targetEndpoint);
 
             _registry.RegisterBinding(binding);
-            _registered = true;
 
             EventHandler RegisterObserver(TTarget t, Action handler)
             {

@@ -47,8 +47,6 @@ namespace TemperatureConverter.Native.iOS.Application.Login
                 });
         }
 
-        private CommandBinding? _signInBinding;
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -60,12 +58,10 @@ namespace TemperatureConverter.Native.iOS.Application.Login
 
         protected override void ArrangeBindings(Binder<LoginScene> binder)
         {
-            binder.Bind(scene => scene.Username.Editable).To(_usernameInput);
+            binder.Bind(scene => scene.Username.Editable); //.To(_usernameInput);
             binder.Bind(scene => scene.Password.Editable).To(_passwordInput);
 
-            // TODO: Add via binder
-            _signInBinding = new CommandBinding(Scene.SignInCommand, new ButtonCommandTarget(_signInButton));
-            _signInBinding.UpdateCanExecute();
+            binder.Bind(Scene.SignInCommand).To(_signInButton);
         }
     }
 }

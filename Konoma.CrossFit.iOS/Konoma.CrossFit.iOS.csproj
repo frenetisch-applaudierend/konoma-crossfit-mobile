@@ -50,7 +50,9 @@
     <ItemGroup>
         <Compile Include="Bindings\Binder.cs" />
         <Compile Include="Bindings\BindingRegistry.cs" />
+        <Compile Include="Bindings\ButtonCommandTarget.cs" />
         <Compile Include="Bindings\CommandBinding.cs" />
+        <Compile Include="Bindings\CommandBindingBuilder.cs" />
         <Compile Include="Bindings\CommandTarget.cs" />
         <Compile Include="Bindings\IBinding.cs" />
         <Compile Include="Bindings\PropertyBinding.cs" />

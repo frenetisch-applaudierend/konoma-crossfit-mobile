@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Konoma.CrossFit
 {
-    public class CommandBinding : IDisposable
+    public class CommandBinding : IBinding
     {
         public CommandBinding(ICommand command, ICommandTarget target)
         {
@@ -17,14 +17,14 @@ namespace Konoma.CrossFit
         private readonly ICommand _command;
         private readonly ICommandTarget _target;
 
-        public void UpdateCanExecute() =>
-            _target.SetCommandCanExecute(_command.CanExecute(null));
-
         private void HandleCanExecuteChanged(object sender, EventArgs e) =>
             UpdateCanExecute();
 
         private void HandleOnExecute() =>
             _command.Execute(null);
+
+        private void UpdateCanExecute() =>
+            _target.SetCommandCanExecute(_command.CanExecute(null));
 
         public void Dispose()
         {
@@ -32,6 +32,14 @@ namespace Konoma.CrossFit
 
             _target.OnExecute = null;
             _target.Dispose();
+
+            OnDisposed?.Invoke(this);
+            OnDisposed = null;
         }
+
+        public Action<IBinding>? OnDisposed { get; set; }
+
+        public void SetupAfterRegistration() =>
+            UpdateCanExecute();
     }
 }
