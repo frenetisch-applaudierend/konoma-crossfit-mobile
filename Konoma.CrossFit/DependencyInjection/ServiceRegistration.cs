@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Konoma.CrossFit
@@ -12,6 +13,9 @@ namespace Konoma.CrossFit
             where TServiceImpl : class, TService;
 
         void AddTransient<TService>()
+            where TService : class;
+
+        void AddTransient<TService>(Func<IServiceProvider, TService> builder)
             where TService : class;
 
         void AddTransient<TService, TServiceImpl>()
@@ -40,6 +44,10 @@ namespace Konoma.CrossFit
         public void AddTransient<TService>()
             where TService : class
             => _services.AddTransient<TService>();
+
+        public void AddTransient<TService>(Func<IServiceProvider, TService> builder)
+            where TService : class
+            => _services.AddTransient<TService>(builder);
 
         public void AddTransient<TService, TServiceImpl>()
             where TService : class
