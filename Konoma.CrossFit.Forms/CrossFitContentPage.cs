@@ -1,6 +1,6 @@
 using Xamarin.Forms;
 
-namespace Konoma.CrossFit.Forms
+namespace Konoma.CrossFit
 {
     public abstract class CrossFitContentPage<TScene> : ContentPage
         where TScene : Scene

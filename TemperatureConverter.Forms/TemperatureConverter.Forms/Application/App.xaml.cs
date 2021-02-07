@@ -1,5 +1,4 @@
 ﻿using Konoma.CrossFit;
-using Konoma.CrossFit.Forms;
 using TemperatureConverter.Core.Application;
 using TemperatureConverter.Core.Application.Converter;
 using TemperatureConverter.Core.Application.Login;
@@ -8,7 +7,7 @@ using TemperatureConverter.Forms.Application.Converter;
 using TemperatureConverter.Forms.Application.Login;
 using TemperatureConverter.Forms.Services;
 using Xamarin.Forms.Xaml;
-using Navigation = Konoma.CrossFit.Forms.Navigation;
+using Navigation = Konoma.CrossFit.Navigation;
 
 namespace TemperatureConverter.Forms.Application
 {

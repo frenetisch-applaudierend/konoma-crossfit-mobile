@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Konoma.CrossFit.Forms
+namespace Konoma.CrossFit
 {
     public static class Navigation
     {

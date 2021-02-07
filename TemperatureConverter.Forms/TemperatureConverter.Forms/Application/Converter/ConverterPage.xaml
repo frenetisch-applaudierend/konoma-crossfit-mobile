@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<forms:CrossFitContentPage
+<crossFit:CrossFitContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:forms="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
     xmlns:core="clr-namespace:TemperatureConverter.Core.Application.Converter;assembly=TemperatureConverter.Core"
     xmlns:common="clr-namespace:TemperatureConverter.Forms.Application.Common;assembly=TemperatureConverter.Forms"
+    xmlns:crossFit="clr-namespace:Konoma.CrossFit;assembly=Konoma.CrossFit.Forms"
     x:TypeArguments="core:ConverterScene"
     x:DataType="core:ConverterScene"
     x:Class="TemperatureConverter.Forms.Application.Converter.ConverterPage"
@@ -19,4 +19,4 @@
             <common:LabeledEntry Label="{Binding FahrenheitLabel}" Text="{Binding Fahrenheit.Editable}" />
         </StackLayout>
     </ContentPage.Content>
-</forms:CrossFitContentPage>
+</crossFit:CrossFitContentPage>

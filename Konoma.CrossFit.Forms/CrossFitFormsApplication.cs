@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Konoma.CrossFit.Forms
+namespace Konoma.CrossFit
 {
     public abstract class CrossFitFormsApplication<TCoordinator> : Xamarin.Forms.Application
         where TCoordinator : Coordinator, new()

@@ -1,4 +1,4 @@
-using Konoma.CrossFit.Forms;
+using Konoma.CrossFit;
 using TemperatureConverter.Forms.Application.Converter;
 
 namespace TemperatureConverter.Forms.Application.Login

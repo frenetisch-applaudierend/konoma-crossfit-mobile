@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<crossfit:CrossFitFormsApplication
+<crossFit:CrossFitFormsApplication
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:crossfit="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
     xmlns:application="clr-namespace:TemperatureConverter.Core.Application;assembly=TemperatureConverter.Core"
+    xmlns:crossFit="clr-namespace:Konoma.CrossFit;assembly=Konoma.CrossFit.Forms"
     x:TypeArguments="application:TemperatureConverterCoordinator"
     x:Class="TemperatureConverter.Forms.Application.App">
 
     <Application.Resources>
     </Application.Resources>
 
-</crossfit:CrossFitFormsApplication>
+</crossFit:CrossFitFormsApplication>

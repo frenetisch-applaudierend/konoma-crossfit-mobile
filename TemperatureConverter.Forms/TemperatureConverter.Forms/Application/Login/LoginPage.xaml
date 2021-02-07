@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<forms:CrossFitContentPage
+<crossFit:CrossFitContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:forms="clr-namespace:Konoma.CrossFit.Forms;assembly=Konoma.CrossFit.Forms"
     xmlns:login="clr-namespace:TemperatureConverter.Core.Application.Login;assembly=TemperatureConverter.Core"
     xmlns:common="clr-namespace:TemperatureConverter.Forms.Application.Common;assembly=TemperatureConverter.Forms"
+    xmlns:crossFit="clr-namespace:Konoma.CrossFit;assembly=Konoma.CrossFit.Forms"
     x:Class="TemperatureConverter.Forms.Application.Login.LoginPage"
     x:TypeArguments="login:LoginScene"
     x:DataType="login:LoginScene"
@@ -18,4 +18,4 @@
             <Button Text="{Binding LoginButtonTitle}" Command="{Binding SignInCommand}" />
         </StackLayout>
     </ContentPage.Content>
-</forms:CrossFitContentPage>
+</crossFit:CrossFitContentPage>
