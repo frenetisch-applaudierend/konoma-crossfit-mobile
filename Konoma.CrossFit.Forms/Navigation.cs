@@ -17,7 +17,7 @@ namespace Konoma.CrossFit.Forms
             private readonly Page _currentPage;
             private readonly Func<CrossFitContentPage<TScene>> _targetPage;
 
-            public async Task NavigateAsync() => await _currentPage.Navigation.PushAsync(_targetPage());
+            public async Task NavigateAsync(bool animated) => await _currentPage.Navigation.PushAsync(_targetPage());
         }
 
         public class Replace<TScene> : INavigation<TScene> where TScene : Scene
@@ -31,7 +31,7 @@ namespace Konoma.CrossFit.Forms
             private readonly Page _currentPage;
             private readonly Func<CrossFitContentPage<TScene>> _targetPage;
 
-            public async Task NavigateAsync()
+            public async Task NavigateAsync(bool animated)
             {
                 _currentPage.Navigation.InsertPageBefore(_targetPage(), _currentPage);
                 await _currentPage.Navigation.PopAsync();
@@ -49,7 +49,7 @@ namespace Konoma.CrossFit.Forms
             private readonly Application _application;
             private readonly Func<CrossFitContentPage<TScene>> _targetPage;
 
-            public Task NavigateAsync()
+            public Task NavigateAsync(bool animated)
             {
                 _application.MainPage = _targetPage();
                 return Task.CompletedTask;
@@ -65,7 +65,7 @@ namespace Konoma.CrossFit.Forms
             Func<CrossFitContentPage<TScene>> targetPage)
             where TScene : Scene
         {
-            navigationPoint.RegisterNavigation(new Navigation.Push<TScene>(currentPage, targetPage));
+            navigationPoint.Connect(new Navigation.Push<TScene>(currentPage, targetPage));
         }
 
         public static void RegisterReplace<TScene>(
@@ -74,7 +74,7 @@ namespace Konoma.CrossFit.Forms
             Func<CrossFitContentPage<TScene>> targetPage)
             where TScene : Scene
         {
-            navigationPoint.RegisterNavigation(new Navigation.Replace<TScene>(currentPage, targetPage));
+            navigationPoint.Connect(new Navigation.Replace<TScene>(currentPage, targetPage));
         }
 
         public static void RegisterMainPage<TScene>(
@@ -83,7 +83,7 @@ namespace Konoma.CrossFit.Forms
             Func<CrossFitContentPage<TScene>> targetPage)
             where TScene : Scene
         {
-            navigationPoint.RegisterNavigation(new Navigation.MainPage<TScene>(application, targetPage));
+            navigationPoint.Connect(new Navigation.MainPage<TScene>(application, targetPage));
         }
     }
 }

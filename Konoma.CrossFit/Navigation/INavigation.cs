@@ -5,6 +5,6 @@ namespace Konoma.CrossFit
     public interface INavigation<TScene>
         where TScene : Scene
     {
-        Task NavigateAsync();
+        Task NavigateAsync(bool animated);
     }
 }

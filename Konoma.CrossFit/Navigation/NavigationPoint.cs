@@ -5,7 +5,7 @@ namespace Konoma.CrossFit
 {
     public interface INavigationPoint
     {
-        Task NavigateAsync();
+        Task NavigateAsync(bool animated = true);
     }
 
     public class NavigationPoint<TScene> : INavigationPoint
@@ -13,21 +13,21 @@ namespace Konoma.CrossFit
     {
         private INavigation<TScene>? _navigation;
 
-        public void Navigate()
+        public void Navigate(bool animated = true)
         {
             EnsureNavigation();
 
-            _navigation!.NavigateAsync().FireAndForget();
+            _navigation!.NavigateAsync(animated).FireAndForget();
         }
 
-        public async Task NavigateAsync()
+        public async Task NavigateAsync(bool animated = true)
         {
             EnsureNavigation();
 
-            await _navigation!.NavigateAsync();
+            await _navigation!.NavigateAsync(animated);
         }
 
-        public void RegisterNavigation(INavigation<TScene> navigation)
+        public void Connect(INavigation<TScene> navigation)
         {
             _navigation = navigation;
         }

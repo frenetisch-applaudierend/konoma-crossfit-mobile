@@ -37,6 +37,13 @@ namespace Konoma.CrossFit
 
         #region Lifecycle
 
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+
+            ConnectNavigationPoints();
+        }
+
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
@@ -51,6 +58,8 @@ namespace Konoma.CrossFit
 
             BindingRegistry.ClearAndDisposeBindings();
         }
+
+        protected abstract void ConnectNavigationPoints();
 
         protected abstract void ArrangeBindings(Binder<TScene> binder);
 

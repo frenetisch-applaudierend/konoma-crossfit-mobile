@@ -1,6 +1,8 @@
 using Konoma.CrossFit;
+using TemperatureConverter.Core.Application.Converter;
 using TemperatureConverter.Core.Application.Login;
 using TemperatureConverter.Native.iOS.Application.Common;
+using TemperatureConverter.Native.iOS.Application.Converter;
 using UIKit;
 
 namespace TemperatureConverter.Native.iOS.Application.Login
@@ -51,14 +53,24 @@ namespace TemperatureConverter.Native.iOS.Application.Login
         {
             base.ViewDidLoad();
 
+            Title = Scene.ScreenTitle;
+
             _usernameInput.Label = Scene.UsernameLabel;
             _passwordInput.Label = Scene.PasswordLabel;
             _signInButton.SetTitle(Scene.LoginButtonTitle, UIControlState.Normal);
         }
 
+        protected override void ConnectNavigationPoints()
+        {
+            Scene.ShowConverter.Connect(
+                Navigation
+                    .Root<ConverterScene, ConverterViewController>(this)
+                    .InNavigationController());
+        }
+
         protected override void ArrangeBindings(Binder<LoginScene> binder)
         {
-            binder.Bind(scene => scene.Username.Editable); //.To(_usernameInput);
+            binder.Bind(scene => scene.Username.Editable).To(_usernameInput);
             binder.Bind(scene => scene.Password.Editable).To(_passwordInput);
 
             binder.Bind(Scene.SignInCommand).To(_signInButton);

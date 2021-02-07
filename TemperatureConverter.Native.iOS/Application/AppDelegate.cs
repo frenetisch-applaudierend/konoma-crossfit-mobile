@@ -14,10 +14,16 @@ namespace TemperatureConverter.Native.iOS.Application
             services.AddSingleton<IPreferencesService, PreferencesService>();
         }
 
-        protected override void RegisterNavigationPoints(TemperatureConverterCoordinator coordinator)
+        protected override void ConnectNavigationPoints(TemperatureConverterCoordinator coordinator)
         {
-            coordinator.ShowLogin.RegisterRoot(Window!, () => new LoginViewController());
-            coordinator.ShowHome.RegisterRoot(Window!, () => new ConverterViewController());
+            coordinator.ShowLogin.Connect(
+                Navigation
+                    .Root(Window!, () => new LoginViewController())
+                    .InNavigationController());
+            coordinator.ShowHome.Connect(
+                Navigation
+                    .Root(Window!, () => new ConverterViewController())
+                    .InNavigationController());
         }
     }
 }

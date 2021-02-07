@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{C9B2F1F5-32E5-4C19-A1B0-4E54460E476F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample App", "Sample App", "{A8E53564-B3F5-4B7A-A8FD-CE6595DCBD69}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Apps", "Sample Apps", "{A8E53564-B3F5-4B7A-A8FD-CE6595DCBD69}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konoma.CrossFit.Forms", "Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj", "{58B4508D-BDAA-40CD-AF0D-5DF6FA055A1F}"
 EndProject

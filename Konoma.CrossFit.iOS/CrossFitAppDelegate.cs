@@ -24,7 +24,7 @@ namespace Konoma.CrossFit
         private async Task StartApplicationAsync()
         {
             await Coordinator.InitializeAsync(RegisterPlatformServicesAsync);
-            RegisterNavigationPoints(Coordinator);
+            ConnectNavigationPoints(Coordinator);
             await Coordinator.StartApplicationAsync();
         }
 
@@ -54,7 +54,7 @@ namespace Konoma.CrossFit
         {
         }
 
-        protected abstract void RegisterNavigationPoints(TCoordinator coordinator);
+        protected abstract void ConnectNavigationPoints(TCoordinator coordinator);
 
         #endregion
     }

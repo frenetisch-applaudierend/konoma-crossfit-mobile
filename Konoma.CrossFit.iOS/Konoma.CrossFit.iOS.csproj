@@ -62,7 +62,8 @@
         <Compile Include="CrossFitAppDelegate.cs" />
         <Compile Include="CrossFitViewController.cs" />
         <Compile Include="ICrossFitViewController.cs" />
-        <Compile Include="Navigation.cs" />
+        <Compile Include="Navigation\EntryPointNavigation.cs" />
+        <Compile Include="Navigation\RootNavigation.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
