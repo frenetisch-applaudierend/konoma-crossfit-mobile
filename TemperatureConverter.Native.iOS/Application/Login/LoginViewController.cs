@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using Konoma.CrossFit;
 using TemperatureConverter.Core.Application.Login;
 using TemperatureConverter.Native.iOS.Application.Common;
@@ -49,8 +47,6 @@ namespace TemperatureConverter.Native.iOS.Application.Login
                 });
         }
 
-        private PropertyBinding<string>? _usernameBinding;
-        private PropertyBinding<string>? _passwordBinding;
         private CommandBinding? _signInBinding;
 
         public override void ViewDidLoad()
@@ -62,42 +58,12 @@ namespace TemperatureConverter.Native.iOS.Application.Login
             _signInButton.SetTitle(Scene.LoginButtonTitle, UIControlState.Normal);
         }
 
-        public override void ViewWillAppear(bool animated)
+        protected override void ArrangeBindings(Binder<LoginScene> binder)
         {
-            base.ViewWillAppear(animated);
+            binder.Bind(scene => scene.Username.Editable).To(_usernameInput);
+            binder.Bind(scene => scene.Password.Editable).To(_passwordInput);
 
-            var usernameSource = BindingEndpoint<string>.Create(Scene, scene => scene.Username.Editable);
-            var usernameTarget = BindingEndpoint<string>.Create(
-                _usernameInput,
-                i => i.Text,
-                (i, handler) =>
-                {
-                    // ReSharper disable once ConvertToLocalFunction
-                    EventHandler observer = delegate { handler(); };
-                    i.TextChanged += observer;
-                    return observer;
-                },
-                (i, observer) => i.TextChanged -= observer);
-
-            _usernameBinding = new PropertyBinding<string>(usernameSource, usernameTarget);
-            _usernameBinding.HandleSourceUpdated();
-
-            var passwordSource = BindingEndpoint<string>.Create(Scene, scene => scene.Password.Editable);
-            var passwordTarget = BindingEndpoint<string>.Create(
-                _passwordInput,
-                i => i.Text,
-                (i, handler) =>
-                {
-                    // ReSharper disable once ConvertToLocalFunction
-                    EventHandler observer = delegate { handler(); };
-                    i.TextChanged += observer;
-                    return observer;
-                },
-                (i, observer) => i.TextChanged -= observer);
-
-            _passwordBinding = new PropertyBinding<string>(passwordSource, passwordTarget);
-            _passwordBinding.HandleSourceUpdated();
-
+            // TODO: Add via binder
             _signInBinding = new CommandBinding(Scene.SignInCommand, new ButtonCommandTarget(_signInButton));
             _signInBinding.UpdateCanExecute();
         }

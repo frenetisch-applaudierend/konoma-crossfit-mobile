@@ -32,7 +32,7 @@ namespace Konoma.CrossFit
             Expression<Func<TModel, T>> expression,
             Func<TModel, Action, TObserver> registerObserver,
             Action<TModel, TObserver> unregisterObserver)
-            where TModel : notnull
+            where TModel : class
         {
             var property = PropertyExpressionParser.ParseExpression<T>(expression.Body, model, mustBeObservable: false);
             var endpoint = new BindingEndpoint<T>(property.Getter, property.Setter);

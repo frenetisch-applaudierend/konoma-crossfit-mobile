@@ -2,7 +2,7 @@ using System;
 
 namespace Konoma.CrossFit
 {
-    public sealed class PropertyBinding<T> : IDisposable
+    public sealed class PropertyBinding<T> : IBinding
     {
         public PropertyBinding(BindingEndpoint<T> source, BindingEndpoint<T> target)
         {
@@ -16,7 +16,7 @@ namespace Konoma.CrossFit
         private readonly BindingEndpoint<T> _source;
         private readonly BindingEndpoint<T> _target;
 
-        public void HandleSourceUpdated()
+        private void HandleSourceUpdated()
         {
             if (!_target.Writable)
                 return;
@@ -25,7 +25,7 @@ namespace Konoma.CrossFit
             _target.SetValue(value);
         }
 
-        public void HandleTargetUpdated()
+        private void HandleTargetUpdated()
         {
             if (!_source.Writable)
                 return;
@@ -34,10 +34,20 @@ namespace Konoma.CrossFit
             _source.SetValue(value);
         }
 
+        public Action<IBinding>? OnDisposed { get; set; }
+
+        public void SetupAfterRegistration()
+        {
+            HandleSourceUpdated();
+        }
+
         public void Dispose()
         {
             _source.Dispose();
             _target.Dispose();
+
+            OnDisposed?.Invoke(this);
+            OnDisposed = null;
         }
     }
 }

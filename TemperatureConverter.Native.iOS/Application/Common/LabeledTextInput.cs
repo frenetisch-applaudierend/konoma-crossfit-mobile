@@ -1,5 +1,6 @@
 using System;
 using CoreMedia;
+using Konoma.CrossFit;
 using UIKit;
 
 namespace TemperatureConverter.Native.iOS.Application.Common
@@ -36,6 +37,18 @@ namespace TemperatureConverter.Native.iOS.Application.Common
         {
             add => _inputView.EditingChanged += value;
             remove => _inputView.EditingChanged -= value;
+        }
+    }
+
+    public static class LabeledTextInputBindingExtensions
+    {
+        public static void To(this PropertyBindingBuilder<string> builder, LabeledTextInput input)
+        {
+            builder.To(
+                input,
+                i => i.Text,
+                (i, handler) => i.TextChanged += handler,
+                (i, handler) => i.TextChanged -= handler);
         }
     }
 }
