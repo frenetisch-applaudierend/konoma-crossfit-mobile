@@ -53,9 +53,14 @@
         <Reference Include="System.Xml" />
         <Reference Include="System.Core" />
         <Reference Include="Mono.Android" />
+        <Reference Include="Xamarin.AndroidX.AppCompat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\.nuget\packages\xamarin.androidx.appcompat\1.2.0.6\lib\monoandroid90\Xamarin.AndroidX.AppCompat.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Application\Converter\ConverterFragment.cs" />
         <Compile Include="Application\LauncherActivity.cs" />
+        <Compile Include="Application\Login\LoginFragment.cs" />
         <Compile Include="Application\TemparatureConverterApplication.cs" />
         <Compile Include="Resources\Resource.Designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,9 +72,10 @@
         <None Include="Assets\AboutAssets.txt" />
     </ItemGroup>
     <ItemGroup>
-        <AndroidResource Include="Resources\layout\activity_main.axml">
-            <SubType>Designer</SubType>
-        </AndroidResource>
+        <AndroidResource Include="Resources\layout\fragment_converter.xml" />
+        <AndroidResource Include="Resources\layout\fragment_login.xml" />
+        <AndroidResource Include="Resources\layout\layout_launcher.xml" />
+        <AndroidResource Include="Resources\navigation\nav_graph.xml" />
         <AndroidResource Include="Resources\values\colors.xml" />
         <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
         <AndroidResource Include="Resources\values\strings.xml" />
@@ -78,6 +84,13 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
         <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
+        <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.6" />
+        <PackageReference Include="Xamarin.AndroidX.ConstraintLayout" Version="2.0.4.1" />
+        <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.UI" Version="1.0.0.7" />
+        <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData" Version="2.2.0.4" />
+        <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" Version="2.3.2.1" />
+        <PackageReference Include="Xamarin.AndroidX.Navigation.UI" Version="2.3.2.1" />
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.1.0.5-rc3" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Konoma.CrossFit.Android\Konoma.CrossFit.Android.csproj">

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/show_converter_action">
+
+    <fragment
+            android:id="@+id/show_login_action"
+            android:name="TemperatureConverter.Android.Application.Login.LoginFragment"
+            android:label="Login"
+            tools:layout="@layout/fragment_login"/>
+
+    <fragment
+            android:id="@+id/show_converter_action"
+            android:name="TemperatureConverter.Android.Application.Converter.ConverterFragment"
+            android:label="Converter"
+            tools:layout="@layout/fragment_converter"/>
+
+</navigation>
