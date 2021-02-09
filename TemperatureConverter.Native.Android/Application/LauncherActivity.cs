@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Android.App;
+using Android.OS;
 using AndroidX.AppCompat.Widget;
 using AndroidX.Navigation;
 using AndroidX.Navigation.UI;
@@ -24,16 +25,16 @@ namespace TemperatureConverter.Android.Application
             var navController = Navigation.FindNavController(this, Resource.Id.nav_host_fragment);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            // var navController = Navigation.FindNavController(this, Resource.Id.nav_host_fragment);
             var appBarConfiguration = new AppBarConfiguration.Builder(navController.Graph).Build();
 
             NavigationUI.SetupWithNavController(toolbar, navController, appBarConfiguration);
 
             coordinator.ShowLogin.Connect(
-                new DelegateNavigation<LoginScene>(() => navController.Navigate(Resource.Id.show_converter_action)));
+                new DelegateNavigation<LoginScene>(() => navController.Navigate(Resource.Id.start_login_action)));
             coordinator.ShowHome.Connect(
                 new DelegateNavigation<ConverterScene>(
-                    () => navController.Navigate(Resource.Id.show_converter_action)));
+                    () => Navigation.FindNavController(this, Resource.Id.nav_host_fragment)
+                        .Navigate(Resource.Id.start_converter_action)));
         }
     }
 

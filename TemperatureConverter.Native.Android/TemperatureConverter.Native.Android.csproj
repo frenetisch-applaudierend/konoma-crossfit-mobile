@@ -58,6 +58,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Application\Common\BlankFragment.cs" />
         <Compile Include="Application\Converter\ConverterFragment.cs" />
         <Compile Include="Application\LauncherActivity.cs" />
         <Compile Include="Application\Login\LoginFragment.cs" />
@@ -72,6 +73,7 @@
         <None Include="Assets\AboutAssets.txt" />
     </ItemGroup>
     <ItemGroup>
+        <AndroidResource Include="Resources\layout\fragment_blank.xml" />
         <AndroidResource Include="Resources\layout\fragment_converter.xml" />
         <AndroidResource Include="Resources\layout\fragment_login.xml" />
         <AndroidResource Include="Resources\layout\layout_launcher.xml" />
