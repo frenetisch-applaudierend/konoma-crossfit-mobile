@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace Konoma.CrossFit
 {
-    public static class Navigation
+    public static partial class Navigation
     {
         public class Push<TScene> : INavigation<TScene> where TScene : Scene
         {
@@ -37,24 +37,6 @@ namespace Konoma.CrossFit
                 await _currentPage.Navigation.PopAsync();
             }
         }
-
-        public class MainPage<TScene> : INavigation<TScene> where TScene : Scene
-        {
-            public MainPage(Application application, Func<CrossFitContentPage<TScene>> targetPage)
-            {
-                _application = application;
-                _targetPage = targetPage;
-            }
-
-            private readonly Application _application;
-            private readonly Func<CrossFitContentPage<TScene>> _targetPage;
-
-            public Task NavigateAsync(bool animated)
-            {
-                _application.MainPage = _targetPage();
-                return Task.CompletedTask;
-            }
-        }
     }
 
     public static class NavigationPointRegistrationExtensions
@@ -75,15 +57,6 @@ namespace Konoma.CrossFit
             where TScene : Scene
         {
             navigationPoint.Connect(new Navigation.Replace<TScene>(currentPage, targetPage));
-        }
-
-        public static void RegisterMainPage<TScene>(
-            this NavigationPoint<TScene> navigationPoint,
-            Application application,
-            Func<CrossFitContentPage<TScene>> targetPage)
-            where TScene : Scene
-        {
-            navigationPoint.Connect(new Navigation.MainPage<TScene>(application, targetPage));
         }
     }
 }

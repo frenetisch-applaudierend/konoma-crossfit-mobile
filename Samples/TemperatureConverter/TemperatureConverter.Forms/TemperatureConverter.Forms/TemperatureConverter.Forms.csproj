@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj" />
+      <ProjectReference Include="..\..\..\..\Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj" />
       <ProjectReference Include="..\..\TemperatureConverter.Core\TemperatureConverter.Core.csproj" />
     </ItemGroup>
 

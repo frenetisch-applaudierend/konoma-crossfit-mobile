@@ -12,27 +12,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{C9B2F1F5-32E5-4C19-A1B0-4E54460E476F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Apps", "Sample Apps", "{A8E53564-B3F5-4B7A-A8FD-CE6595DCBD69}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konoma.CrossFit.Forms", "Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj", "{58B4508D-BDAA-40CD-AF0D-5DF6FA055A1F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konoma.CrossFit", "Konoma.CrossFit\Konoma.CrossFit.csproj", "{C078F0FA-B85E-4690-B1CC-C4F730EA86EF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Core", "TemperatureConverter.Core\TemperatureConverter.Core.csproj", "{B85B25F7-7346-48B5-8567-74F1B23C5194}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Forms", "TemperatureConverter.Forms\TemperatureConverter.Forms\TemperatureConverter.Forms.csproj", "{60B4C1D5-B1DB-4B05-87DF-8FE1493867B0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Forms.Android", "TemperatureConverter.Forms\TemperatureConverter.Forms.Android\TemperatureConverter.Forms.Android.csproj", "{ED9E6D78-37FB-46BD-B108-5DE637430B1F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Forms.iOS", "TemperatureConverter.Forms\TemperatureConverter.Forms.iOS\TemperatureConverter.Forms.iOS.csproj", "{6A08B264-CE88-4AAB-8661-C5B17C1E4FA4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Native.iOS", "TemperatureConverter.Native.iOS\TemperatureConverter.Native.iOS.csproj", "{C5904669-BC3E-42F3-8406-3FA1BEDEB236}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konoma.CrossFit.iOS", "Konoma.CrossFit.iOS\Konoma.CrossFit.iOS.csproj", "{2EA35A6E-B07D-4F8B-A522-8DC806685A69}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konoma.CrossFit.Android", "Konoma.CrossFit.Android\Konoma.CrossFit.Android.csproj", "{E48674A9-A094-40D1-B18F-0529FD8E3B85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Native.Android", "TemperatureConverter.Native.Android\TemperatureConverter.Native.Android.csproj", "{E685449A-98B0-497C-8492-C3545247155D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konoma.CrossFit.Forms", "Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj", "{58B4508D-BDAA-40CD-AF0D-5DF6FA055A1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Apps", "Sample Apps", "{A8E53564-B3F5-4B7A-A8FD-CE6595DCBD69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Core", "Samples\TemperatureConverter\TemperatureConverter.Core\TemperatureConverter.Core.csproj", "{B85B25F7-7346-48B5-8567-74F1B23C5194}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Forms", "Samples\TemperatureConverter\TemperatureConverter.Forms\TemperatureConverter.Forms\TemperatureConverter.Forms.csproj", "{60B4C1D5-B1DB-4B05-87DF-8FE1493867B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Forms.Android", "Samples\TemperatureConverter\TemperatureConverter.Forms\TemperatureConverter.Forms.Android\TemperatureConverter.Forms.Android.csproj", "{ED9E6D78-37FB-46BD-B108-5DE637430B1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Forms.iOS", "Samples\TemperatureConverter\TemperatureConverter.Forms\TemperatureConverter.Forms.iOS\TemperatureConverter.Forms.iOS.csproj", "{6A08B264-CE88-4AAB-8661-C5B17C1E4FA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Native.iOS", "Samples\TemperatureConverter\TemperatureConverter.Native.iOS\TemperatureConverter.Native.iOS.csproj", "{C5904669-BC3E-42F3-8406-3FA1BEDEB236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter.Native.Android", "Samples\TemperatureConverter\TemperatureConverter.Native.Android\TemperatureConverter.Native.Android.csproj", "{E685449A-98B0-497C-8492-C3545247155D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

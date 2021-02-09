@@ -69,7 +69,7 @@
         <AndroidResource Include="Resources\values\colors.xml" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj">
+        <ProjectReference Include="..\..\..\..\Konoma.CrossFit.Forms\Konoma.CrossFit.Forms.csproj">
           <Project>{58b4508d-bdaa-40cd-af0d-5df6fa055a1f}</Project>
           <Name>Konoma.CrossFit.Forms</Name>
         </ProjectReference>

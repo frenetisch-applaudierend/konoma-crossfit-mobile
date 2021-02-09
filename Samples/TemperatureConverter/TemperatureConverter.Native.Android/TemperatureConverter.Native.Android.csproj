@@ -92,14 +92,14 @@
         <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData" Version="2.2.0.4" />
         <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" Version="2.3.2.1" />
         <PackageReference Include="Xamarin.AndroidX.Navigation.UI" Version="2.3.2.1" />
-        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.1.0.5-rc3" />
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.2.1.1" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Konoma.CrossFit.Android\Konoma.CrossFit.Android.csproj">
+      <ProjectReference Include="..\..\..\Konoma.CrossFit.Android\Konoma.CrossFit.Android.csproj">
         <Project>{e48674a9-a094-40d1-b18f-0529fd8e3b85}</Project>
         <Name>Konoma.CrossFit.Android</Name>
       </ProjectReference>
-      <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj">
+      <ProjectReference Include="..\..\..\Konoma.CrossFit\Konoma.CrossFit.csproj">
         <Project>{c078f0fa-b85e-4690-b1cc-c4f730ea86ef}</Project>
         <Name>Konoma.CrossFit</Name>
       </ProjectReference>

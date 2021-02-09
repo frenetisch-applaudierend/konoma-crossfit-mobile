@@ -27,10 +27,10 @@ namespace TemperatureConverter.Forms.Application
         protected override void RegisterNavigationPoints(TemperatureConverterCoordinator coordinator)
         {
             coordinator.ShowLogin.Connect(
-                new Navigation.MainPage<LoginScene>(this, () => new LoginPage()));
+                Navigation.MainPage(this, () => new LoginPage()).InNavigationPage());
 
             coordinator.ShowHome.Connect(
-                new Navigation.MainPage<ConverterScene>(this, () => new ConverterPage()));
+                Navigation.MainPage(this, () => new ConverterPage()).InNavigationPage());
         }
     }
 }
