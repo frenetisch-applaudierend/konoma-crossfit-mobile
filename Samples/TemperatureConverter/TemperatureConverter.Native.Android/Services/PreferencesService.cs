@@ -9,7 +9,7 @@ namespace TemperatureConverter.Android.Services
 
         public PreferencesService(Context context)
         {
-            _sharedPreferences = context.GetSharedPreferences("TemperatureConverter", FileCreationMode.Private);
+            _sharedPreferences = context.GetSharedPreferences("TemperatureConverter", FileCreationMode.Private)!;
         }
 
         public bool GetBool(string key, bool defaultValue) =>

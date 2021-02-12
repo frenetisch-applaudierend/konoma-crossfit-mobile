@@ -48,17 +48,7 @@
         <Folder Include="Resources\" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Bindings\Binder.cs" />
-        <Compile Include="Bindings\BindingRegistry.cs" />
         <Compile Include="Bindings\ButtonCommandTarget.cs" />
-        <Compile Include="Bindings\CommandBinding.cs" />
-        <Compile Include="Bindings\CommandBindingBuilder.cs" />
-        <Compile Include="Bindings\CommandTarget.cs" />
-        <Compile Include="Bindings\IBinding.cs" />
-        <Compile Include="Bindings\PropertyBinding.cs" />
-        <Compile Include="Bindings\BindingEndpoint.cs" />
-        <Compile Include="Bindings\PropertyBindingBuilder.cs" />
-        <Compile Include="Bindings\PropertyExpressionParser.cs" />
         <Compile Include="CrossFitAppDelegate.cs" />
         <Compile Include="CrossFitViewController.cs" />
         <Compile Include="ICrossFitViewController.cs" />

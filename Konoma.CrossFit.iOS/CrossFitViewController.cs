@@ -48,8 +48,7 @@ namespace Konoma.CrossFit
         {
             base.ViewWillAppear(animated);
 
-            var binder = new Binder<TScene>(BindingRegistry, Scene);
-            ArrangeBindings(binder);
+            ArrangeBindings(new Binder<TScene>(BindingRegistry, Scene));
         }
 
         public override void ViewWillDisappear(bool animated)

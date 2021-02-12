@@ -14,6 +14,19 @@ namespace Konoma.CrossFit
             _sourceEndpoint = sourceEndpoint;
         }
 
+        public void To<TTarget, TObserver>(
+            TTarget target,
+            Expression<Func<TTarget, T>> targetExpression,
+            Func<TTarget, Action, TObserver> register,
+            Action<TTarget, TObserver> unregister)
+            where TTarget : class
+        {
+            var targetEndpoint = BindingEndpoint<T>.Create(target, targetExpression, register, unregister);
+            var binding = new PropertyBinding<T>(_sourceEndpoint, targetEndpoint);
+
+            _registry.RegisterBinding(binding);
+        }
+
         public void To<TTarget>(
             TTarget target,
             Expression<Func<TTarget, T>> targetExpression,
@@ -21,10 +34,7 @@ namespace Konoma.CrossFit
             Action<TTarget, EventHandler> unregister)
             where TTarget : class
         {
-            var targetEndpoint = BindingEndpoint<T>.Create(target, targetExpression, RegisterObserver, unregister);
-            var binding = new PropertyBinding<T>(_sourceEndpoint, targetEndpoint);
-
-            _registry.RegisterBinding(binding);
+            To(target, targetExpression, RegisterObserver, unregister);
 
             EventHandler RegisterObserver(TTarget t, Action handler)
             {

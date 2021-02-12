@@ -2,9 +2,19 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <TextView android:id="@+id/username_label"
               android:layout_width="match_parent"
@@ -15,13 +25,17 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"/>
 
-    <TextView android:id="@+id/fahrenheit_label"
+    <TextView android:id="@+id/password_label"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               tools:text="° Fahrenheit"/>
 
-    <EditText android:id="@+id/fahrenheit_input"
+    <EditText android:id="@+id/password_input"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/signin_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>

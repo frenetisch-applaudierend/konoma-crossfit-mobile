@@ -22,6 +22,7 @@
         <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
         <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
         <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <DebugSymbols>True</DebugSymbols>
@@ -34,6 +35,7 @@
         <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
         <AndroidLinkMode>None</AndroidLinkMode>
         <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+        <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <DebugSymbols>True</DebugSymbols>
@@ -58,10 +60,9 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Application\Common\BlankFragment.cs" />
-        <Compile Include="Application\Converter\ConverterFragment.cs" />
+        <Compile Include="Application\Converter\ConverterActivity.cs" />
         <Compile Include="Application\LauncherActivity.cs" />
-        <Compile Include="Application\Login\LoginFragment.cs" />
+        <Compile Include="Application\Login\LoginActivity.cs" />
         <Compile Include="Application\TemparatureConverterApplication.cs" />
         <Compile Include="Resources\Resource.Designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,11 +74,8 @@
         <None Include="Assets\AboutAssets.txt" />
     </ItemGroup>
     <ItemGroup>
-        <AndroidResource Include="Resources\layout\fragment_blank.xml" />
-        <AndroidResource Include="Resources\layout\fragment_converter.xml" />
-        <AndroidResource Include="Resources\layout\fragment_login.xml" />
-        <AndroidResource Include="Resources\layout\layout_launcher.xml" />
-        <AndroidResource Include="Resources\navigation\nav_graph.xml" />
+        <AndroidResource Include="Resources\layout\layout_converter.xml" />
+        <AndroidResource Include="Resources\layout\layout_login.xml" />
         <AndroidResource Include="Resources\values\colors.xml" />
         <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
         <AndroidResource Include="Resources\values\strings.xml" />
@@ -85,13 +83,12 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
-        <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
         <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.6" />
         <PackageReference Include="Xamarin.AndroidX.ConstraintLayout" Version="2.0.4.1" />
         <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.UI" Version="1.0.0.7" />
         <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData" Version="2.2.0.4" />
-        <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" Version="2.3.2.1" />
-        <PackageReference Include="Xamarin.AndroidX.Navigation.UI" Version="2.3.2.1" />
+        <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" Version="2.3.3" />
+        <PackageReference Include="Xamarin.AndroidX.Navigation.UI" Version="2.3.3" />
         <PackageReference Include="Xamarin.Google.Android.Material" Version="1.2.1.1" />
     </ItemGroup>
     <ItemGroup>
