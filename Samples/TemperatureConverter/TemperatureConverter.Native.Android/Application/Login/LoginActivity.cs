@@ -34,10 +34,6 @@ namespace TemperatureConverter.Android.Application.Login
             binder.Bind(scene => scene.Username.Editable).ToEditText(this, Resource.Id.username_input);
             binder.Bind(scene => scene.Password.Editable).ToEditText(this, Resource.Id.password_input);
 
-            #error Fix bindings for EditText, because currently every input will reset the cursor to the beginning
-            #error Possible fix: similar to commands, add an IBindingTarget interface that will include getters and
-            #error setters, then override the setter for EditText to check for the current value before overriding.
-
             binder.Bind(Scene.SignInCommand).ToButton(this, Resource.Id.signin_button);
         }
     }

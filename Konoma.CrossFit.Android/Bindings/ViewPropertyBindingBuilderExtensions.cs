@@ -25,24 +25,5 @@ namespace Konoma.CrossFit
                 builder.To(view, targetExpression, register, unregister);
             }
         }
-
-        public static void ToEditText(
-            this PropertyBindingBuilder<string> builder,
-            Activity activity,
-            int targetId)
-        {
-            To<string, EditText, EventHandler<TextChangedEventArgs>>(
-                builder,
-                activity,
-                targetId,
-                v => v.Text!,
-                (v, handler) =>
-                {
-                    EventHandler<TextChangedEventArgs> observer = delegate { handler(); };
-                    v.TextChanged += observer;
-                    return observer;
-                },
-                (v, observer) => v.TextChanged -= observer);
-        }
     }
 }

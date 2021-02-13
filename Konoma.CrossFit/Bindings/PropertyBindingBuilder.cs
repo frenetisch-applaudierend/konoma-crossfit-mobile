@@ -6,12 +6,19 @@ namespace Konoma.CrossFit
     public class PropertyBindingBuilder<T>
     {
         private readonly BindingRegistry _registry;
-        private readonly BindingEndpoint<T> _sourceEndpoint;
+        private readonly IBindingEndpoint<T> _sourceEndpoint;
 
-        public PropertyBindingBuilder(BindingRegistry registry, BindingEndpoint<T> sourceEndpoint)
+        public PropertyBindingBuilder(BindingRegistry registry, IBindingEndpoint<T> sourceEndpoint)
         {
             _registry = registry;
             _sourceEndpoint = sourceEndpoint;
+        }
+
+        public void To(IBindingEndpoint<T> targetEndpoint)
+        {
+            var binding = new PropertyBinding<T>(_sourceEndpoint, targetEndpoint);
+
+            _registry.RegisterBinding(binding);
         }
 
         public void To<TTarget, TObserver>(
@@ -22,9 +29,7 @@ namespace Konoma.CrossFit
             where TTarget : class
         {
             var targetEndpoint = BindingEndpoint<T>.Create(target, targetExpression, register, unregister);
-            var binding = new PropertyBinding<T>(_sourceEndpoint, targetEndpoint);
-
-            _registry.RegisterBinding(binding);
+            To(targetEndpoint);
         }
 
         public void To<TTarget>(

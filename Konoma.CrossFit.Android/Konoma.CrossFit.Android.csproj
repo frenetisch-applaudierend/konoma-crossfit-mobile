@@ -149,11 +149,13 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Bindings\ButtonCommandTarget.cs" />
+        <Compile Include="Bindings\EditTextBindingEndpoint.cs" />
         <Compile Include="CrossFitActivity.cs" />
         <Compile Include="CrossFitApplication.cs" />
         <Compile Include="CrossFitLauncherActivity.cs" />
         <Compile Include="Resources\Resource.Designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Utilities\ActivityExtensions.cs" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Resources" />

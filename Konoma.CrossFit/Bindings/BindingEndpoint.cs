@@ -4,7 +4,18 @@ using System.Linq.Expressions;
 
 namespace Konoma.CrossFit
 {
-    public sealed class BindingEndpoint<T> : IDisposable
+    public interface IBindingEndpoint<T> : IDisposable
+    {
+        Action? OnChanged { get; set; }
+
+        T GetValue();
+
+        void SetValue(T value);
+
+        bool Writable { get; }
+    }
+
+    public sealed class BindingEndpoint<T> : IBindingEndpoint<T>
     {
         public static BindingEndpoint<T> Create<TModel>(
             TModel model,

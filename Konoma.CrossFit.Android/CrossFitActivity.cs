@@ -65,7 +65,7 @@ namespace Konoma.CrossFit
         #region Convenience
 
         protected TView RequireViewById<TView>(int resourceId) where TView : View =>
-            this.RequireViewById(resourceId).JavaCast<TView>();
+            ActivityExtensions.RequireViewById<TView>(this, resourceId);
 
         #endregion
     }

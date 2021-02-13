@@ -4,7 +4,7 @@ namespace Konoma.CrossFit
 {
     public sealed class PropertyBinding<T> : IBinding
     {
-        public PropertyBinding(BindingEndpoint<T> source, BindingEndpoint<T> target)
+        public PropertyBinding(IBindingEndpoint<T> source, IBindingEndpoint<T> target)
         {
             _source = source;
             _target = target;
@@ -13,8 +13,8 @@ namespace Konoma.CrossFit
             target.OnChanged = HandleTargetUpdated;
         }
 
-        private readonly BindingEndpoint<T> _source;
-        private readonly BindingEndpoint<T> _target;
+        private readonly IBindingEndpoint<T> _source;
+        private readonly IBindingEndpoint<T> _target;
 
         private void HandleSourceUpdated()
         {
