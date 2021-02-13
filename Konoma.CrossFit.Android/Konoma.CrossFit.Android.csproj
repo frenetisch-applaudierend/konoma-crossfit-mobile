@@ -148,11 +148,18 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Bindings\AndroidBinder.cs" />
+        <Compile Include="Bindings\AndroidCommandBindingBuilder.cs" />
         <Compile Include="Bindings\ButtonCommandTarget.cs" />
         <Compile Include="Bindings\EditTextBindingEndpoint.cs" />
+        <Compile Include="Bindings\MenuItemCommandRegistry.cs" />
+        <Compile Include="Bindings\OptionsMenuCommandTarget.cs" />
         <Compile Include="CrossFitActivity.cs" />
         <Compile Include="CrossFitApplication.cs" />
         <Compile Include="CrossFitLauncherActivity.cs" />
+        <Compile Include="Navigation\AndroidNavigation.cs" />
+        <Compile Include="Navigation\PushActivityNavigation.cs" />
+        <Compile Include="Navigation\StartTaskNavigation.cs" />
         <Compile Include="Resources\Resource.Designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Utilities\ActivityExtensions.cs" />

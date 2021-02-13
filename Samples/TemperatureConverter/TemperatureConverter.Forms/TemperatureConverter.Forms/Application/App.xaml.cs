@@ -7,7 +7,6 @@ using TemperatureConverter.Forms.Application.Converter;
 using TemperatureConverter.Forms.Application.Login;
 using TemperatureConverter.Forms.Services;
 using Xamarin.Forms.Xaml;
-using Navigation = Konoma.CrossFit.Navigation;
 
 namespace TemperatureConverter.Forms.Application
 {
@@ -27,10 +26,10 @@ namespace TemperatureConverter.Forms.Application
         protected override void RegisterNavigationPoints(TemperatureConverterCoordinator coordinator)
         {
             coordinator.ShowLogin.Connect(
-                Navigation.MainPage(this, () => new LoginPage()).InNavigationPage());
+                FormsNavigation.MainPage(this, () => new LoginPage()).InNavigationPage());
 
             coordinator.ShowHome.Connect(
-                Navigation.MainPage(this, () => new ConverterPage()).InNavigationPage());
+                FormsNavigation.MainPage(this, () => new ConverterPage()).InNavigationPage());
         }
     }
 }

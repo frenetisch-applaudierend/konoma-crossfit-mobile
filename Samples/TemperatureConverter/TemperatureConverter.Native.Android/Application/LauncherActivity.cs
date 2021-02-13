@@ -19,26 +19,4 @@ namespace TemperatureConverter.Android.Application
             coordinator.ShowHome.Connect(new StartTaskNavigation<ConverterScene, ConverterActivity>(this));
         }
     }
-
-    public class StartTaskNavigation<TScene, TActivity> : INavigation<TScene>
-        where TScene : Scene
-        where TActivity : Activity
-    {
-        public StartTaskNavigation(Context context)
-        {
-            _context = context;
-        }
-
-        private readonly Context _context;
-
-        public Task NavigateAsync(bool animated)
-        {
-            var intent = new Intent(_context, typeof(TActivity));
-            intent.AddFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask);
-
-            _context.StartActivity(intent);
-
-            return Task.CompletedTask;
-        }
-    }
 }

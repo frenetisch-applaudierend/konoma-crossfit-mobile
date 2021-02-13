@@ -29,7 +29,7 @@
               android:layout_height="wrap_content"
               tools:text="° Fahrenheit"/>
 
-    <EditText android:id="@+id/celsius_input"
+    <EditText android:id="@+id/fahrenheit_input"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"/>
 

@@ -4,18 +4,18 @@ namespace Konoma.CrossFit
 {
     public class CommandBindingBuilder
     {
-        private readonly BindingRegistry _registry;
-        private readonly ICommand _command;
-
         public CommandBindingBuilder(BindingRegistry registry, ICommand command)
         {
-            _registry = registry;
-            _command = command;
+            Registry = registry;
+            Command = command;
         }
 
-        public void To(ICommandTarget target)
+        protected BindingRegistry Registry { get; }
+        protected ICommand Command { get; }
+
+        public virtual void To(ICommandTarget target)
         {
-            _registry.RegisterBinding(new CommandBinding(_command, target));
+            Registry.RegisterBinding(new CommandBinding(Command, target));
         }
     }
 }

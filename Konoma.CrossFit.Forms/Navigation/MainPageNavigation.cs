@@ -22,7 +22,7 @@ namespace Konoma.CrossFit
         }
     }
 
-    public partial class Navigation
+    public partial class FormsNavigation
     {
         public static MainPageNavigation<TScene> MainPage<TScene>(
             Application application,

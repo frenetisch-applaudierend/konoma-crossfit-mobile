@@ -7,22 +7,23 @@ namespace Konoma.CrossFit
     public class Binder<TScene>
         where TScene : Scene
     {
-        private readonly BindingRegistry _registry;
-        private readonly TScene _scene;
-
         public Binder(BindingRegistry registry, TScene scene)
         {
-            _registry = registry;
-            _scene = scene;
+            Registry = registry;
+            Scene = scene;
         }
 
-        public PropertyBindingBuilder<T> Bind<T>(Expression<Func<TScene, T>> sceneProperty)
+        protected BindingRegistry Registry { get; }
+
+        protected TScene Scene { get; }
+
+        public virtual PropertyBindingBuilder<T> Bind<T>(Expression<Func<TScene, T>> sceneProperty)
         {
-            var source = BindingEndpoint<T>.Create(_scene, sceneProperty);
-            return new PropertyBindingBuilder<T>(_registry, source);
+            var source = BindingEndpoint<T>.Create(Scene, sceneProperty);
+            return new PropertyBindingBuilder<T>(Registry, source);
         }
 
-        public CommandBindingBuilder Bind(ICommand command) =>
-            new CommandBindingBuilder(_registry, command);
+        public virtual CommandBindingBuilder Bind(ICommand command) =>
+            new CommandBindingBuilder(Registry, command);
     }
 }

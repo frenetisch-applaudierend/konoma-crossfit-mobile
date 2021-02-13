@@ -30,6 +30,7 @@ namespace Konoma.CrossFit
         protected TScene Scene { get; }
 
         protected BindingRegistry BindingRegistry { get; } = new BindingRegistry();
+        protected MenuItemCommandRegistry MenuItemCommandRegistry { get; } = new MenuItemCommandRegistry();
 
         #endregion
 
@@ -46,7 +47,7 @@ namespace Konoma.CrossFit
         {
             base.OnStart();
 
-            ArrangeBindings(new Binder<TScene>(BindingRegistry, Scene));
+            ArrangeBindings(new AndroidBinder<TScene>(BindingRegistry, MenuItemCommandRegistry, Scene));
         }
 
         protected override void OnStop()
@@ -54,7 +55,18 @@ namespace Konoma.CrossFit
             base.OnStop();
 
             BindingRegistry.ClearAndDisposeBindings();
+            MenuItemCommandRegistry.ClearHandlers();
         }
+
+        public override bool OnPrepareOptionsMenu(IMenu? menu)
+        {
+            MenuItemCommandRegistry.PrepareOptionsMenu(menu!);
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item) =>
+            MenuItemCommandRegistry.HandleItemSelected(item)
+            || base.OnOptionsItemSelected(item);
 
         protected abstract void ConnectNavigationPoints();
 

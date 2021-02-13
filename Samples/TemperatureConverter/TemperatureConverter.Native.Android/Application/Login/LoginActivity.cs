@@ -1,7 +1,10 @@
 using Android.App;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using Konoma.CrossFit;
+using TemperatureConverter.Android.Application.Converter;
+using TemperatureConverter.Core.Application.Converter;
 using TemperatureConverter.Core.Application.Login;
 using Support = AndroidX.AppCompat.Widget;
 
@@ -26,7 +29,7 @@ namespace TemperatureConverter.Android.Application.Login
 
         protected override void ConnectNavigationPoints()
         {
-            // TODO: Add me
+            Scene.ShowConverter.Connect(AndroidNavigation.PushActivity<ConverterScene, ConverterActivity>(this));
         }
 
         protected override void ArrangeBindings(Binder<LoginScene> binder)
