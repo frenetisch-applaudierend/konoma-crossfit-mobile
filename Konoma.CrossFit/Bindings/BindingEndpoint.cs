@@ -86,7 +86,7 @@ namespace Konoma.CrossFit
             OnChanged?.Invoke();
         }
 
-        private bool _disposed = false;
+        private bool _disposed;
 
         private void CheckDisposed()
         {

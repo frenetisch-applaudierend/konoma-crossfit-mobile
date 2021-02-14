@@ -42,7 +42,13 @@ namespace Konoma.CrossFit
                 });
         }
 
-        protected abstract Task RegisterServicesAsync(IServiceRegistration services);
+        protected virtual Task RegisterServicesAsync(IServiceRegistration services)
+        {
+            RegisterServices(services);
+            return Task.CompletedTask;
+        }
+
+        protected virtual void RegisterServices(IServiceRegistration services) { }
 
         public abstract Task StartApplicationAsync();
     }

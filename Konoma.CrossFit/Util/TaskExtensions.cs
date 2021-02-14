@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Konoma.CrossFit
 {
-    public static class TaskExtensions
+    internal static class TaskExtensions
     {
         public static void FireAndForget(this Task task)
         {

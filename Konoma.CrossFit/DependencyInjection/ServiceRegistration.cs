@@ -47,7 +47,7 @@ namespace Konoma.CrossFit
 
         public void AddTransient<TService>(Func<IServiceProvider, TService> builder)
             where TService : class
-            => _services.AddTransient<TService>(builder);
+            => _services.AddTransient(builder);
 
         public void AddTransient<TService, TServiceImpl>()
             where TService : class
