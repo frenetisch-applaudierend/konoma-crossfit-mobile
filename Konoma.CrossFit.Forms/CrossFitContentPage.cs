@@ -12,5 +12,14 @@ namespace Konoma.CrossFit
         }
 
         protected TScene Scene { get; }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ConnectNavigationPoints();
+        }
+
+        protected abstract void ConnectNavigationPoints();
     }
 }
