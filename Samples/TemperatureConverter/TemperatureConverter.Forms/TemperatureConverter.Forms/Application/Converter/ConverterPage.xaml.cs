@@ -8,8 +8,12 @@ namespace TemperatureConverter.Forms.Application.Converter
         public ConverterPage()
         {
             InitializeComponent();
+        }
 
-            Scene.ShowLogin.RegisterReplace(this, () => new LoginPage());
+        protected override void ConnectNavigationPoints()
+        {
+            Scene.ShowLogin.Connect(
+                FormsNavigation.MainPage(Xamarin.Forms.Application.Current, () => new LoginPage()).InNavigationPage());
         }
     }
 }

@@ -44,7 +44,7 @@ namespace TemperatureConverter.Core.Application.Converter
 
         #region Commands
 
-        public ICommand SignOutCommand => new Command(SignOut);
+        public ICommand SignOutCommand => new DelegateCommand(SignOut);
 
         #endregion
 

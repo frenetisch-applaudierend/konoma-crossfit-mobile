@@ -34,17 +34,16 @@ namespace TemperatureConverter.Core.Application.Login
 
         public string LoginButtonTitle { get; } = LoginStrings.SignIn;
 
-        public Property<string> Username => GetProperty("", _signInControl.NotifyCanExecuteChanged);
+        public Property<string> Username => GetProperty("", SignInCommand.UpdateCanExecute);
 
-        public Property<string> Password => GetProperty("", _signInControl.NotifyCanExecuteChanged);
+        public Property<string> Password => GetProperty("", SignInCommand.UpdateCanExecute);
 
         #endregion
 
         #region Commands
 
-        private readonly Command.Control _signInControl = new Command.Control();
 
-        public ICommand SignInCommand => new Command(_signInControl, SignIn) {CanExecuteCallback = CanSignIn};
+        public DelegateCommand SignInCommand => new DelegateCommand(SignIn, CanSignIn);
 
         private void SignIn()
         {
