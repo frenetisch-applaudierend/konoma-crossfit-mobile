@@ -16,12 +16,12 @@ namespace Konoma.CrossFit
         where TScene : Scene
         where TNavigation : EntryPointNavigation<TScene, TNavigation>
     {
-        protected EntryPointNavigation(Func<CrossFitContentPage<TScene>> targetPage)
+        protected EntryPointNavigation(Func<ICrossFitPage<TScene>> targetPage)
         {
             _targetPage = targetPage;
         }
 
-        private readonly Func<CrossFitContentPage<TScene>> _targetPage;
+        private readonly Func<ICrossFitPage<TScene>> _targetPage;
         private Func<Page, Page>? _container;
 
         public TNavigation ContainedIn(Func<Page, Page> container)
@@ -32,7 +32,7 @@ namespace Konoma.CrossFit
 
         protected Page InstantiatePage()
         {
-            var target = _targetPage();
+            var target = _targetPage().AsFormsPage();
             var controller = _container is { } wrapper ? wrapper(target) : target;
             return controller;
         }

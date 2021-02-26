@@ -7,7 +7,7 @@ namespace Konoma.CrossFit
     public class MainPageNavigation<TScene> : EntryPointNavigation<TScene, MainPageNavigation<TScene>>
         where TScene : Scene
     {
-        public MainPageNavigation(Application application, Func<CrossFitContentPage<TScene>> targetPage) : base(
+        public MainPageNavigation(Application application, Func<ICrossFitPage<TScene>> targetPage) : base(
             targetPage)
         {
             _application = application;
@@ -26,7 +26,7 @@ namespace Konoma.CrossFit
     {
         public static MainPageNavigation<TScene> MainPage<TScene>(
             Application application,
-            Func<CrossFitContentPage<TScene>> targetPage) where TScene : Scene
+            Func<ICrossFitPage<TScene>> targetPage) where TScene : Scene
             => new MainPageNavigation<TScene>(application, targetPage);
     }
 }

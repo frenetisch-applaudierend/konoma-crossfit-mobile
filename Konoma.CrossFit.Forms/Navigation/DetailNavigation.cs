@@ -8,23 +8,24 @@ namespace Konoma.CrossFit
     {
         public DetailNavigation(
             Page currentPage,
-            Func<CrossFitContentPage<TScene>> targetPage)
+            Func<ICrossFitPage<TScene>> targetPage)
         {
             _currentPage = currentPage;
             _targetPage = targetPage;
         }
 
         private readonly Page _currentPage;
-        private readonly Func<CrossFitContentPage<TScene>> _targetPage;
+        private readonly Func<ICrossFitPage<TScene>> _targetPage;
 
-        public async Task NavigateAsync(bool animated) => await _currentPage.Navigation.PushAsync(_targetPage());
+        public async Task NavigateAsync(bool animated) =>
+            await _currentPage.Navigation.PushAsync(_targetPage().AsFormsPage());
     }
 
     public partial class FormsNavigation
     {
         public static DetailNavigation<TScene> PushDetail<TScene>(
             Page currentPage,
-            Func<CrossFitContentPage<TScene>> targetPage) where TScene : Scene
+            Func<ICrossFitPage<TScene>> targetPage) where TScene : Scene
             => new DetailNavigation<TScene>(currentPage, targetPage);
     }
 }

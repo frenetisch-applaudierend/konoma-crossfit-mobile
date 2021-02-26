@@ -2,10 +2,10 @@ using Xamarin.Forms;
 
 namespace Konoma.CrossFit
 {
-    public abstract class CrossFitContentPage<TScene> : ContentPage, ICrossFitPage<TScene>
+    public abstract class CrossFitTabbedPage<TScene> : TabbedPage, ICrossFitPage<TScene>
         where TScene : Scene
     {
-        protected CrossFitContentPage()
+        protected CrossFitTabbedPage()
         {
             Scene = Konoma.CrossFit.Scene.Create<TScene>();
             BindingContext = Scene;

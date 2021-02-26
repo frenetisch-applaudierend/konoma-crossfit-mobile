@@ -7,7 +7,7 @@ namespace Konoma.CrossFit
     public class ModalNavigation<TScene> : EntryPointNavigation<TScene, ModalNavigation<TScene>>
         where TScene : Scene
     {
-        public ModalNavigation(Page currentPage, Func<CrossFitContentPage<TScene>> targetPage) : base(targetPage)
+        public ModalNavigation(Page currentPage, Func<ICrossFitPage<TScene>> targetPage) : base(targetPage)
         {
             _currentPage = currentPage;
         }
@@ -24,7 +24,7 @@ namespace Konoma.CrossFit
     {
         public static ModalNavigation<TScene> PushModal<TScene>(
             Page currentPage,
-            Func<CrossFitContentPage<TScene>> targetPage) where TScene : Scene
+            Func<ICrossFitPage<TScene>> targetPage) where TScene : Scene
             => new ModalNavigation<TScene>(currentPage, targetPage);
     }
 }
