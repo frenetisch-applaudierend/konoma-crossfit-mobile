@@ -11,6 +11,13 @@ namespace Konoma.CrossFit
             BindingContext = Scene;
         }
 
+        protected CrossFitContentPage(object args)
+        {
+            Scene = Konoma.CrossFit.Scene.Create<TScene>();
+            Scene.SetArguments(args);
+            BindingContext = Scene;
+        }
+
         protected TScene Scene { get; }
 
         protected override void OnAppearing()
