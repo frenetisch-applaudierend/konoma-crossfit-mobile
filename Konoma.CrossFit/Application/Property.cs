@@ -6,7 +6,7 @@ namespace Konoma.CrossFit
     {
         public Property(T initialValue, Action<T, T> onChanging, Action<T, T> onChanged)
         {
-            _value = initialValue;
+            Value = initialValue;
             _onChanging = onChanging;
             _onChanged = onChanged;
         }
@@ -14,31 +14,31 @@ namespace Konoma.CrossFit
         private readonly Action<T, T> _onChanging;
         private readonly Action<T, T> _onChanged;
 
-        private T _value;
+        public T Value { get; private set; }
 
         public T Editable
         {
-            get => _value;
+            get => Value;
             set => Set(value);
         }
 
-        public T Get() => _value;
+        public T Get() => Value;
 
         public void Set(T value, bool notify = true)
         {
-            if (Equals(_value, value))
+            if (Equals(Value, value))
                 return;
 
-            var previousValue = _value;
+            var previousValue = Value;
             if (notify)
                 _onChanging(previousValue, value);
 
-            _value = value;
+            Value = value;
 
             if (notify)
                 _onChanged(previousValue, value);
         }
 
-        public static implicit operator T(Property<T> property) => property._value;
+        public static implicit operator T(Property<T> property) => property.Value;
     }
 }
