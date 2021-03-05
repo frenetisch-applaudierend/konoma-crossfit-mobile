@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Konoma.CrossFit
 {
-    public class TransformingObservableCollection<TElement, TSource> : IObservableReadonlyCollection<TElement>
+    public class TransformingObservableCollection<TElement, TSource> : IObservableReadonlyCollection<TElement>, IDisposable
     {
         private readonly IObservableReadonlyCollection<TSource> _sourceCollection;
         private readonly Func<TSource, TElement> _transformer;
@@ -21,11 +21,6 @@ namespace Konoma.CrossFit
 
             _sourceCollection.CollectionChanged += SourceCollectionOnCollectionChanged;
             _sourceCollection.PropertyChanged += SourceCollectionOnPropertyChanged;
-        }
-
-        ~TransformingObservableCollection()
-        {
-            Console.WriteLine("TransformingObservableCollection collected");
         }
 
         private void SourceCollectionOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -85,5 +80,14 @@ namespace Konoma.CrossFit
         public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public void Dispose()
+        {
+            _sourceCollection.CollectionChanged -= SourceCollectionOnCollectionChanged;
+            _sourceCollection.PropertyChanged -= SourceCollectionOnPropertyChanged;
+
+            CollectionChanged = null;
+            PropertyChanged = null;
+        }
     }
 }
