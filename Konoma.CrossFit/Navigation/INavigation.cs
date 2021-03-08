@@ -2,6 +2,11 @@ using System.Threading.Tasks;
 
 namespace Konoma.CrossFit
 {
+    public interface INavigation
+    {
+        Task NavigateAsync(bool animated);
+    }
+
     // ReSharper disable once UnusedTypeParameter
     public interface INavigation<TScene>
         where TScene : Scene
