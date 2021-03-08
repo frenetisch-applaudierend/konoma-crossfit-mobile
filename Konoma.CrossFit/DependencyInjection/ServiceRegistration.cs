@@ -12,6 +12,9 @@ namespace Konoma.CrossFit
             where TService : class
             where TServiceImpl : class, TService;
 
+        void AddSingleton<TService>(Func<IServiceProvider, TService> builder)
+            where TService : class;
+
         void AddTransient<TService>()
             where TService : class;
 
@@ -40,6 +43,10 @@ namespace Konoma.CrossFit
             where TService : class
             where TServiceImpl : class, TService
             => _services.AddSingleton<TService, TServiceImpl>();
+
+        public void AddSingleton<TService>(Func<IServiceProvider, TService> builder)
+            where TService : class
+            => _services.AddSingleton(builder);
 
         public void AddTransient<TService>()
             where TService : class
