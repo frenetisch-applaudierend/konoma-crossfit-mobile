@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace Konoma.CrossFit
 {
-    public class SmartObservableCollection<T> : ObservableCollection<T>, IObservableReadonlyCollection<T>
+    public class SmartObservableCollection<T> : ObservableCollection<T>, IReadonlyObservableCollection<T>
     {
         public SmartObservableCollection()
         {

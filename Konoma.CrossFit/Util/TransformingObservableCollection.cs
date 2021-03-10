@@ -7,13 +7,13 @@ using System.Linq;
 
 namespace Konoma.CrossFit
 {
-    public class TransformingObservableCollection<TElement, TSource> : IObservableReadonlyCollection<TElement>, IDisposable
+    public class TransformingObservableCollection<TElement, TSource> : IReadonlyObservableCollection<TElement>, IDisposable
     {
-        private readonly IObservableReadonlyCollection<TSource> _sourceCollection;
+        private readonly IReadonlyObservableCollection<TSource> _sourceCollection;
         private readonly Func<TSource, TElement> _transformer;
 
         public TransformingObservableCollection(
-            IObservableReadonlyCollection<TSource> sourceCollection,
+            IReadonlyObservableCollection<TSource> sourceCollection,
             Func<TSource, TElement> transformer)
         {
             _sourceCollection = sourceCollection;

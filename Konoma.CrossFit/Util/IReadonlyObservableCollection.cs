@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Konoma.CrossFit
 {
-    public interface IObservableReadonlyCollection<out T> :
+    public interface IReadonlyObservableCollection<out T> :
         IReadOnlyCollection<T>,
         INotifyCollectionChanged,
         INotifyPropertyChanged
