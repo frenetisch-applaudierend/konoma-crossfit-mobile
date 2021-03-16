@@ -6,6 +6,9 @@ namespace Konoma.CrossFit
     public abstract class CrossFitFormsApplication<TCoordinator> : Xamarin.Forms.Application
         where TCoordinator : Coordinator, new()
     {
+        // ReSharper disable once NotAccessedField.Local
+        private TCoordinator _coordinator = null!;
+
         protected void StartApplication()
         {
             StartApplicationAsync().FireAndForget();
@@ -21,6 +24,8 @@ namespace Konoma.CrossFit
                 await coordinator.InitializeAsync(RegisterPlattformServicesAsync);
                 RegisterNavigationPoints(coordinator);
                 await coordinator.StartApplicationAsync();
+
+                _coordinator = coordinator;
             }
             catch (Exception ex)
             {
