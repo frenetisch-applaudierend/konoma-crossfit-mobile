@@ -37,9 +37,12 @@ namespace Konoma.CrossFit
             if (!(arguments is TArgs args))
                 throw new ArgumentException($"Scene must be initialized with arguments of type {typeof(TArgs)}");
 
+            Arguments = args;
             ApplyArguments(args);
         }
 
         protected abstract void ApplyArguments(TArgs args);
+
+        protected TArgs Arguments { get; private set; } = null!;
     }
 }

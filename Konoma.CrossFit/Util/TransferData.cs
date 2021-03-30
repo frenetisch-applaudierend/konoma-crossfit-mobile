@@ -27,7 +27,7 @@ namespace Konoma.CrossFit
             ?? throw new InvalidOperationException($"Property {key} was required, but not found");
 
         protected T GetRequiredStructValue<T>([CallerMemberName] string key = default!) where T : struct =>
-            GetStructValue<T>()
+            GetStructValue<T>(key)
             ?? throw new InvalidOperationException($"Property {key} was required, but not found");
 
         protected void SetValue(object? value, [CallerMemberName] string key = default!)
