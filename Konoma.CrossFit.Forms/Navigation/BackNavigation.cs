@@ -15,7 +15,7 @@ namespace Konoma.CrossFit
 
         public async Task NavigateAsync(bool animated)
         {
-            if (_currentPage.Navigation.NavigationStack.Any())
+            if (_currentPage.Navigation.NavigationStack.Count > 1)
                 await _currentPage.Navigation.PopAsync(animated);
             else if (_currentPage.Navigation.ModalStack.Any())
                 await _currentPage.Navigation.PopModalAsync(animated);
