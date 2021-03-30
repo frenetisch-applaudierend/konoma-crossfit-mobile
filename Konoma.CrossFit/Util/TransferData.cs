@@ -1,37 +1,17 @@
+using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Konoma.CrossFit
 {
     public class TransferData
     {
-        #region Data
-
         private readonly Dictionary<string, object> _data = new Dictionary<string, object>();
 
-        #endregion
-
-        #region Reading and Writing Data
-
-        public string? GetString(string key) => GetObjectValue<string>(key);
-
-        public void SetString(string key, string value) => SetValue(key, value);
-
-        public bool? GetBool(string key) => GetStructValue<bool>(key);
-
-        public void SetBool(string key, bool value) => SetValue(key, value);
-
-        public void SetValue(string key, object? value)
-        {
-            if (value is null)
-                _data.Remove(key);
-            else
-                _data[key] = value;
-        }
-
-        private T? GetObjectValue<T>(string key) where T : class =>
+        protected T? GetObjectValue<T>([CallerMemberName] string key = default!) where T : class =>
             _data.TryGetValue(key, out var value) ? value as T : null;
 
-        private T? GetStructValue<T>(string key) where T : struct
+        protected T? GetStructValue<T>([CallerMemberName] string key = default!) where T : struct
         {
             if (!_data.TryGetValue(key, out var value))
                 return null;
@@ -42,6 +22,20 @@ namespace Konoma.CrossFit
             return null;
         }
 
-        #endregion
+        protected T GetRequiredObjectValue<T>([CallerMemberName] string key = default!) where T : class =>
+            GetObjectValue<T>(key)
+            ?? throw new InvalidOperationException($"Property {key} was required, but not found");
+
+        protected T GetRequiredStructValue<T>([CallerMemberName] string key = default!) where T : struct =>
+            GetStructValue<T>()
+            ?? throw new InvalidOperationException($"Property {key} was required, but not found");
+
+        protected void SetValue(object? value, [CallerMemberName] string key = default!)
+        {
+            if (value is null)
+                _data.Remove(key);
+            else
+                _data[key] = value;
+        }
     }
 }
