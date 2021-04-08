@@ -37,5 +37,7 @@ namespace Konoma.CrossFit
 
             AddRange(range);
         }
+
+        public void ReplaceAt(int index, T newItem) => SetItem(index, newItem);
     }
 }
