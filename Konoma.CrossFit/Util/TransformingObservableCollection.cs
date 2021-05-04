@@ -41,8 +41,8 @@ namespace Konoma.CrossFit
 
                     NotifyCollectionChangedAction.Replace => new NotifyCollectionChangedEventArgs(
                         e.Action,
-                        ConvertItems(e.NewItems),
-                        ConvertItems(e.OldItems),
+                        ConvertItems(e.NewItems)!,
+                        ConvertItems(e.OldItems)!,
                         e.OldStartingIndex),
 
                     NotifyCollectionChangedAction.Move => new NotifyCollectionChangedEventArgs(
@@ -56,7 +56,7 @@ namespace Konoma.CrossFit
                     _ => throw new ArgumentOutOfRangeException()
                 });
 
-            IList<TElement>? ConvertItems(IEnumerable? items)
+            IList? ConvertItems(IEnumerable? items)
             {
                 if (items is null)
                     return null;
