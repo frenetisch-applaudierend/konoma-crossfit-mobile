@@ -7,7 +7,8 @@ using System.Linq;
 
 namespace Konoma.CrossFit
 {
-    public class TransformingObservableCollection<TElement, TSource> : IReadonlyObservableCollection<TElement>, IDisposable
+    public class TransformingObservableCollection<TElement, TSource> : IReadonlyObservableCollection<TElement>,
+        IDisposable
     {
         private readonly IReadonlyObservableCollection<TSource> _sourceCollection;
         private readonly Func<TSource, TElement> _transformer;
@@ -88,6 +89,16 @@ namespace Konoma.CrossFit
 
             CollectionChanged = null;
             PropertyChanged = null;
+        }
+    }
+
+    public static class ObservableCollectionTransformationExtensions
+    {
+        public static TransformingObservableCollection<TElement, TSource> Transform<TElement, TSource>(
+            this IReadonlyObservableCollection<TSource> source,
+            Func<TSource, TElement> transformer)
+        {
+            return new TransformingObservableCollection<TElement, TSource>(source, transformer);
         }
     }
 }
